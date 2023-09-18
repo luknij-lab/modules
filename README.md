@@ -4,4 +4,4 @@ Repozytorium zawiera moduły do wykorzytania na stronie internetowej.
 Struktura repozytorium:
 
 1. Menus
-	1.1 Main menu (simple)
+ - Main menu (simple) - Proste menu dwupoziomowe. Menu mobilne wysówane od góry.
