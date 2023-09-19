@@ -1,14 +1,24 @@
-.site-header{
-  display: flex;
-  flex-direction: column;  
-  max-width: 1920px;
-  margin: 0 auto;
-  border: 1px dashed red;
+/* RESET CSS */
+
+body{
+  margin: 0;
 }
 
-/* .menu-top{
+/* Mobile first - main menu*/
+.site-header{
   display: flex;
-  height: 100%;
-} */
+  flex-direction: column;
+  max-width: 1920px;
+  margin: 0 auto;
+  background-color: #0F3444;
+}
 
-/* ul */
+/* logo */
+.headerWrap{
+  line-height: 0;
+  text-align: center;
+}
+.headerWrap a{
+  display: inline-block;
+  line-height: 0;
+}
