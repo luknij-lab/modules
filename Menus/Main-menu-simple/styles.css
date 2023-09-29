@@ -13,7 +13,7 @@ body{
 
 --------------------------------------------- */
 
-/* Zmienne
+/* 1. Zmienne
 --------------------------------------------- */
 :root{
   --white-dev: #fdfdfd;
@@ -22,7 +22,7 @@ body{
   --dark-green: #12b672;
 }
 
-/* Górny pasek - style ogólne
+/* 2. Górny pasek - style ogólne
 --------------------------------------------- */
 
 .site-header{
@@ -33,7 +33,7 @@ body{
   background-color: #0F3444;
 }
 
-/* Logo - lewa strona górnego paska
+/* 3. Logo - lewa strona górnego paska
 --------------------------------------------- */
 .headerWrap{
   line-height: 0;
@@ -44,13 +44,13 @@ body{
   line-height: 0;
 }
 
-/* Menu - prawa strona gównego paska
+/* 4. Menu - prawa strona gównego paska
 --------------------------------------------- */
 .main-navigation{
   position: relative;
 }
 
-/* BBQ - przycisk menu mobilnego
+/* 5. BBQ - przycisk menu mobilnego
 --------------------------------------------- */
 .hamburger {
   margin: 0;
