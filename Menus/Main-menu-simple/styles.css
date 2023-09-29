@@ -24,8 +24,8 @@ body{
 
 /* 2. Górny pasek - style ogólne
 --------------------------------------------- */
-
 .site-header{
+  position: relative;
   display: flex;
   flex-direction: column;
   max-width: 1920px;
@@ -48,6 +48,16 @@ body{
 --------------------------------------------- */
 .main-navigation{
   position: relative;
+}
+
+.main-navigation button{ /* przycisk */
+  position: absolute;
+  top: -5rem;
+  right: 2rem;
+}
+
+.menu-top{ /* menu mobile */
+  
 }
 
 /* 5. BBQ - przycisk menu mobilnego
