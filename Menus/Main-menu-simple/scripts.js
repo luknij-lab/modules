@@ -1,21 +1,15 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function(event) {
 
 /*
 BBQ ------------------------------- */
 
-  // button
-  const menuBtn = document.querySelector('.hamburger');
-  // menu
-  const mainMenu = document.querySelector('#main-menu');
+  // LD - Body targeting
+  const body_html = document.querySelector('body');
 
-  // Zdarzenie klieknięcia
-  menuBtn.addEventListener('click', () => {
-
-    // Dodanie sufixu do klasy hamburger elementu <button>
-    menuBtn.classList.toggle('hamburger--active');
-
-    // 
-    mainMenu.classList.toggle('mobile--active');
-  });
+  // LD - BBQ targeting
+	const bbq_btn = document.querySelector('.bbq-wrapp');
+	const bbq_one = document.querySelector('.bbq-bar-one');
+	const bbq_two = document.querySelector('.bbq-bar-two');
+	const bbq_three = document.querySelector('.bbq-bar-three');
 
 });
