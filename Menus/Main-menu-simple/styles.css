@@ -66,35 +66,46 @@ body{
   position: fixed;
   top: 0.6rem;
   right: 1rem;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background-color: transparent;
+  width: 50px;
+  height: 50px;
   cursor: pointer;
 }
-.bbq-wrapp{
-  position: relative;
-  display: block;
-  width: 40px;
-  height: 35px;
-}
+
 .bbq-bar{
   position: absolute;
-  top: 0;
-  right: 0;
-  height: 4px;
-  width: 40px;
-  background-color: #fff;
-}
-.bbq-bar-one{
-  top: 20%;
-  transform: translateY(-20%);
-}
-.bbq-bar-two{
   top: 50%;
+  right: 0;
+  width: 50px;
+  height: 6px;
   transform: translateY(-50%);
+  transition: 0.4s;
+  background-color: #fcfcfc;
 }
-.bbq-bar-three{
-  top: 80%;
-  transform: translateY(-80%);
+.bbq-bar:before{
+  top: -16px;
+}
+.bbq-bar:after{
+  top: 16px;
+}
+.bbq-bar:before,
+.bbq-bar:after{
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 6px;
+  background-color: #fcfcfc;
+  transition: 0.4s;
+}
+
+/* Animacja */
+.bbq-bar.active-btn{
+  background-color:rgba(0,0,0,0);
+}
+.bbq-bar.active-btn:before{
+  top: 0;
+  transform: rotate(45deg);
+}
+.bbq-bar.active-btn:after{
+  top: 0;
+  transform: rotate(135deg);
 }
