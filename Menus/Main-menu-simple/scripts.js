@@ -3,13 +3,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
 /*
 BBQ ------------------------------- */
 
-  // LD - Body targeting
-  const body_html = document.querySelector('body');
+	// LD - Body targeting
+  	const body_html = document.querySelector('body');
 
-  // LD - BBQ targeting
-	const bbq_btn = document.querySelector('.bbq-wrapp');
-	const bbq_one = document.querySelector('.bbq-bar-one');
-	const bbq_two = document.querySelector('.bbq-bar-two');
-	const bbq_three = document.querySelector('.bbq-bar-three');
+	// LD - BBQ targeting
+	const bbq = document.querySelector('.bbq');
+	const bbq_bar = document.querySelector('.bbq-bar');
+
+	// LD - BBQ event click
+	bbq.addEventListener("click", function(){
+		bbq_bar.classList.toggle("active-btn")
+	});
 
 });
