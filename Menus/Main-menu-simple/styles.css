@@ -31,7 +31,16 @@ body{
   max-width: 1920px;
   margin: 0 auto;
   background-color: #0F3444;
+
 }
+
+@media screen and (min-width: 768px){
+  .site-header{
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
 
 /* 3. Logo - lewa strona górnego paska
 --------------------------------------------- */
@@ -55,13 +64,64 @@ body{
   position: relative;
 }
 
-.menu-top{ /* menu mobile */
+/* menu mobile */
+
+/* menu desktop */
+@media screen and (min-width: 768px){
+  .menu-top{ 
+    height: 100%;
+  }
+  .menu-top .menu-1{
+    padding: 0;
+    margin: 0;    
+  }
+  .menu-top .menu-1 li{
+    line-height: normal;
+    height: 100%;
+  }
+  .menu-top .menu-1 li a{
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  .main-navigation .menu-top ul{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+  }
+  .main-navigation .menu-top > ul li{
+    list-style-type: none;
+    padding: 0 1rem;
+  }
+  .main-navigation .menu-top ul li.parent-li{
+    position: relative;
+  }
+  .main-navigation .menu-top ul li > ul{
+    display: none;
+  }
+  .main-navigation .menu-top > ul li:hover > ul{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+  .main-navigation .menu-top ul li > ul li{
+    padding: 0;
+    width: 70px;
+  }
 
 }
 
 /* 5. BBQ - przycisk menu mobilnego
 --------------------------------------------- */
+@media screen and (min-width: 768px){
+  
+  .bbq{
+    display: none;
+  }
 
+}
 .bbq {
   position: fixed;
   top: 0.6rem;
@@ -70,7 +130,6 @@ body{
   height: 50px;
   cursor: pointer;
 }
-
 .bbq-bar{
   position: absolute;
   top: 50%;
