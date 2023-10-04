@@ -69,6 +69,7 @@ body{
 /* menu desktop */
 @media screen and (min-width: 768px){
   .menu-top{ 
+    position: relative;
     height: 100%;
   }
   .menu-top .menu-1{
@@ -92,14 +93,29 @@ body{
   }
 
   ul.menu-1{
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
-    list-style-type: none;
+    height: 100%;
     align-items: stretch;
+    list-style-type: none;
   }
 
+  /* Sub-menu */
   ul.sub-menu{
     display: none;
+  }
+
+  ul.menu-1 li.child:hover > ul.sub-menu{
+    position: absolute;
+    display: block;
+    padding: 0;
+  }
+
+  ul.sub-menu > li{
+    list-style-type: none;
+  }
+  ul.menu-1 ul.sub-menu > li > a{
+    padding: 0.4rem 1rem;
   }
 
 }
