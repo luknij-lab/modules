@@ -30,14 +30,17 @@ body{
   flex-direction: column;
   max-width: 1920px;
   margin: 0 auto;
-  background-color: #0F3444;
+}
 
+@media screen and (min-width: 768px){
+  background-color: var(--dark-blue);
 }
 
 @media screen and (min-width: 768px){
   .site-header{
     flex-direction: row;
     justify-content: space-between;
+    background-color: var(--dark-blue);
   }
 }
 
@@ -47,6 +50,7 @@ body{
 .headerWrap{
   line-height: 0;
   padding: 0.6rem;
+  background-color: var(--dark-blue);
 }
 .headerWrap a{
   display: inline-block;
@@ -61,6 +65,7 @@ body{
 --------------------------------------------- */
 .main-navigation{
   position: relative;
+  background-color: var(--dark-blue);
 }
 /* general menu styles */
 ul.menu-1{
@@ -71,12 +76,24 @@ ul.menu-1{
 }
 
 /* menu mobile */
-.menu-top{
-  display: none;
+.main-navigation{
+  visibility: hidden;
+  opacity: 0;
+  transition: 1s;
+}
+
+.main-navigation.mobile{
+  visibility: visible;
+  opacity: 1;
+  transition: 1s;
 }
 
 /* menu desktop */
 @media screen and (min-width: 768px){
+  .main-navigation{
+    visibility: visible;
+    opacity: 1;
+  }
   .menu-top{
     position: relative;
     display: block;
@@ -138,7 +155,7 @@ ul.menu-1{
 
 }
 .bbq {
-  position: fixed;
+  position: absolute;
   top: 0.6rem;
   right: 1rem;
   width: 50px;
