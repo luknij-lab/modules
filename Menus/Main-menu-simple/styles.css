@@ -46,8 +46,7 @@ body{
 --------------------------------------------- */
 .headerWrap{
   line-height: 0;
-  padding-top: 0.4rem;
-  padding-left: 0.4rem;
+  padding: 0.6rem;
 }
 .headerWrap a{
   display: inline-block;
@@ -80,6 +79,7 @@ ul.menu-1{
 @media screen and (min-width: 768px){
   .menu-top{
     position: relative;
+    display: block;
     height: 100%;
   }
   .menu-top .menu-1{
@@ -150,23 +150,23 @@ ul.menu-1{
   top: 50%;
   right: 0;
   width: 50px;
-  height: 6px;
+  height: 5px;
   transform: translateY(-50%);
   transition: 0.4s;
   background-color: #fcfcfc;
 }
 .bbq-bar:before{
-  top: -16px;
+  top: -14px;
 }
 .bbq-bar:after{
-  top: 16px;
+  top: 14px;
 }
 .bbq-bar:before,
 .bbq-bar:after{
   content: '';
   position: absolute;
   width: 50px;
-  height: 6px;
+  height: 5px;
   background-color: #fcfcfc;
   transition: 0.4s;
 }
