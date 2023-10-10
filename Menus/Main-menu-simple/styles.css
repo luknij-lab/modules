@@ -96,6 +96,10 @@ ul.menu-1{
     opacity: 1;
     transition: 1s;
   }
+
+  .main-navigation .sub-menu{
+    display: none;
+  }
 }
 
 
