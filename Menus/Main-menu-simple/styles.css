@@ -88,13 +88,22 @@ ul.menu-1{
     align-items: center;
     visibility: hidden;
     opacity: 0;
-    transition: 1s;
   }
 
   .main-navigation.mobile{
     visibility: visible;
     opacity: 1;
     transition: 1s;
+  }
+  ul.menu-1{
+    padding: 0;
+  }
+
+  .main-navigation .menu-1 li > a{
+    display: block;
+    padding: 0.4rem;
+    font-size: 1.4rem;
+    text-decoration: none;
   }
 
   .main-navigation .sub-menu{
