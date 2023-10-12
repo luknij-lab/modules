@@ -1,6 +1,17 @@
 document.addEventListener("DOMContentLoaded", function(event) {
 
 /*
+Window width ------------------------------- */
+
+const widthOutput = document.querySelector("#width");
+
+function reportWindowSize() {
+	widthOutput.textContent = window.innerWidth;
+
+}
+window.onresize = reportWindowSize;
+
+/*
 BBQ ------------------------------- */
 
 	// Variables - Body targeting
