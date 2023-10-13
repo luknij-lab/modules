@@ -1,15 +1,26 @@
 document.addEventListener("DOMContentLoaded", function(event) {
 
 /*
-Window width ------------------------------- */
+Window width checker -------------- */
 
 const widthOutput = document.querySelector("#width");
+let browser_width = 0;
 
-function reportWindowSize() {
-	widthOutput.textContent = window.innerWidth;
-
+function checkWindowWidth(){
+	//widthOutput.textContent = window.innerWidth;
+	
+	browser_width = window.innerWidth;
 }
-window.onresize = reportWindowSize;
+
+window.onresize = checkWindowWidth;
+
+/*
+First click menu item prevent default behavior ------------------------------- */
+let sub_menu_block_default = querySelectorAll("#main-menu .child");
+console.log(sub_menu_block_default);
+if( browser_width <= 821 ){
+	console.log('Jesteś na mobile');
+}
 
 /*
 BBQ ------------------------------- */
