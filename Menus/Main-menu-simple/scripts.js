@@ -3,24 +3,30 @@ document.addEventListener("DOMContentLoaded", function(event) {
 /*
 Window width checker -------------- */
 
-const widthOutput = document.querySelector("#width");
-let browser_width = 0;
+let widthOutput = document.querySelectorAll("#menu-1 .child");
 
-function checkWindowWidth(){
-	//widthOutput.textContent = window.innerWidth;
-	
-	browser_width = window.innerWidth;
-}
+window.addEventListener("resize", function(){
+	if(window.innerWidth < 768){
+		
+		for(let i = 0; i < widthOutput.length; i++){
+			let click_count = 0;
 
-window.onresize = checkWindowWidth;
+			widthOutput[i].addEventListener("click", (e) => {
 
-/*
-First click menu item prevent default behavior ------------------------------- */
-let sub_menu_block_default = querySelectorAll("#main-menu .child");
-console.log(sub_menu_block_default);
-if( browser_width <= 821 ){
-	console.log('Jesteś na mobile');
-}
+				click_count += 1;
+
+				if( click_count %2 == 0 ){
+					e.default();
+				  }else if( click_count >= 3){
+					click_count = 1;
+					e.preventDefault();
+				  }else{
+					e.preventDefault();
+				  }
+			});
+		} // end for
+	} // end if
+});
 
 /*
 BBQ ------------------------------- */
