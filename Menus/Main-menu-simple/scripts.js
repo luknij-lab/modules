@@ -4,22 +4,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
 Window width checker -------------- */
 
 const widthOutput = document.querySelector("#width");
-let browser_width = 0;
 
-function checkWindowWidth(){
+function checkWindowWidth(xyz){
 	//widthOutput.textContent = window.innerWidth;
 	
 	browser_width = window.innerWidth;
+
+	return xyz;
 }
 
 window.onresize = checkWindowWidth;
 
 /*
 First click menu item prevent default behavior ------------------------------- */
-let sub_menu_block_default = querySelectorAll("#main-menu .child");
+let sub_menu_block_default = document.querySelectorAll("#main-menu .child");
+
 console.log(sub_menu_block_default);
-if( browser_width <= 821 ){
-	console.log('Jesteś na mobile');
+
+if( window.onresize <= 821 ){
+	
 }
 
 /*
