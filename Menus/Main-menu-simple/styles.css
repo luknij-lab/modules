@@ -138,7 +138,7 @@ ul.menu-1{
     align-items: center;
     text-decoration: none;
   }
-  .menu-top .menu-1 li:hover a{
+  .menu-top .menu-1 > li:hover a{
     background-color: #34e89e;
   }
 
@@ -166,7 +166,9 @@ ul.menu-1{
   ul.menu-1 ul.sub-menu > li > a{
     padding: 0.4rem 1rem;
   }
-
+  ul.menu-1 ul.sub-menu li:hover a{ 
+    background-color: #12b672;
+  }
 }
 
 /* 5. BBQ - przycisk menu mobilnego
