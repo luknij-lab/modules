@@ -3,23 +3,29 @@ document.addEventListener("DOMContentLoaded", function(event) {
 /*
 Window width checker -------------- */
 
-let widthOutput = document.querySelectorAll("#menu-1 .child");
+let parentMenu = document.querySelectorAll("ul#menu-1 li.child > a");
+let subMenu = document.querySelectorAll("li.child ul.sub-menu");
+
+console.log(parentMenu); // pomoce
+console.log(subMenu); // pomoce
+
+
 
 window.addEventListener("resize", function(){
-	if(window.innerWidth < 768){
-		
-		for(let i = 0; i < widthOutput.length; i++){
+	if(window.innerWidth < 768 ){
+
+		for(let i = 0; i < parentMenu.length; i++){
 			let click_count = 0;
 
-			widthOutput[i].addEventListener("click", (e) => {
+			parentMenu[i].addEventListener("click", (e) => {
 
 				click_count += 1;
+				console.log(click_count);
 
 				if( click_count %2 == 0 ){
+					console.log('otworzenie rodzica');
 					e.default();
-				  }else if( click_count >= 3){
-					click_count = 1;
-					e.preventDefault();
+					
 				  }else{
 					e.preventDefault();
 				  }
@@ -27,6 +33,8 @@ window.addEventListener("resize", function(){
 		} // end for
 	} // end if
 });
+	
+
 
 /*
 BBQ ------------------------------- */
