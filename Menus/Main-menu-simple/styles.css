@@ -154,6 +154,10 @@ ul.menu-1{
     display: none;
   }
 
+  ul.sub-menu.show{
+    display: block;
+  }
+
   ul.menu-1 li.child:hover > ul.sub-menu{
     position: absolute;
     display: block;
