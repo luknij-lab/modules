@@ -33,7 +33,10 @@ body{
 }
 
 @media screen and (min-width: 768px){
-  background-color: var(--dark-blue);
+  .site-header{
+    background-color: var(--dark-blue);
+  }
+  
 }
 
 @media screen and (min-width: 768px){
@@ -75,7 +78,7 @@ ul.menu-1{
   color: var(--white-dev);
 }
 
-@media screen and (max-width: 767px){
+@media screen and (max-width: 1200px){ /*767px*/
   /* menu mobile */
   .main-navigation{
     position: fixed;
@@ -106,14 +109,17 @@ ul.menu-1{
     text-decoration: none;
   }
 
-  .main-navigation .sub-menu{
+  .sub-menu{
     display: none;
   }
-}
+  .sub-menu-active{
+    display: block;
+  }
+
 
 
 /* menu desktop */
-@media screen and (min-width: 768px){
+@media screen and (min-width: 1201px){ /*768px*/
   .main-navigation{
     visibility: visible;
     opacity: 1;
@@ -177,7 +183,7 @@ ul.menu-1{
 
 /* 5. BBQ - przycisk menu mobilnego
 --------------------------------------------- */
-@media screen and (min-width: 768px){
+@media screen and (min-width: 1201px){ /*768px*/
 
   .bbq{
     display: none;

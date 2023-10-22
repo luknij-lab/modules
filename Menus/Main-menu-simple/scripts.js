@@ -4,35 +4,29 @@ document.addEventListener("DOMContentLoaded", function(event) {
 Window width checker -------------- */
 
 let parentMenu = document.querySelectorAll("ul#menu-1 li.child > a");
-let subMenu = document.querySelectorAll("li.child ul.sub-menu");
+let subMenu = document.querySelectorAll(".sub-menu");
 
 console.log(parentMenu); // pomoce
-console.log(subMenu); // pomoce
 
+for(let i = 0; i < parentMenu.length; ++i){
 
+	parentMenu[i].addEventListener("click", (e) => {
+		e.preventDefault();
+		
+		for(let i = 0; i < subMenu.length; ++i){
+			subMenu[i].classList.toggle('sub-menu');
+		}
+	});
+}
+	
+// } // end for
 
-window.addEventListener("resize", function(){
-	if(window.innerWidth < 768 ){
+// window.addEventListener("resize", function(){
+// 	if(window.innerWidth < 768 ){
 
-		for(let i = 0; i < parentMenu.length; i++){
-			let click_count = 0;
-
-			parentMenu[i].addEventListener("click", (e) => {
-
-				click_count += 1;
-				console.log(click_count);
-
-				if( click_count %2 == 0 ){
-					console.log('otworzenie rodzica');
-					e.default();
-					
-				  }else{
-					e.preventDefault();
-				  }
-			});
-		} // end for
-	} // end if
-});
+		
+// 	} // end if
+// });
 	
 
 
