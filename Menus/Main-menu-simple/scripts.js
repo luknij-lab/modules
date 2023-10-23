@@ -14,6 +14,7 @@ for(let i = 0; i < parentMenu.length; ++i){
 		e.preventDefault();
 		
 		for(let i = 0; i < subMenu.length; ++i){
+			// subMenu = event.target.parentMenu.querySelector('sub-menu');
 			subMenu[i].classList.toggle('sub-menu');
 		}
 	});
