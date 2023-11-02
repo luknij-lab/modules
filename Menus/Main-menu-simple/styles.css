@@ -94,17 +94,23 @@ ul.menu-1{
   opacity: 1;
   transition: 1s;
 }
-.main-navigation > ul{
+.main-navigation ul{
   padding: 0;
 }
 
-.main-navigation > ul > li > a{
-  font-size: 2rem;
+.main-navigation ul > li > a{
+  display: inline-block;
+  padding: 0.4rem;
+  font-size: 1.8rem;
+  text-decoration: none;
 }
 
 .main-navigation .sub-menu{
-  padding-left: 1rem;
+  padding-left: 1.4rem;
   list-style-type: none;
+}
+.main-navigation .sub-menu > li > a{
+  background-color: #1e5b75;
 }
 
 /* .main-navigation .menu-1 li > a{
