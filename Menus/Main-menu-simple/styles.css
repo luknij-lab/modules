@@ -74,7 +74,9 @@ ul.menu-1{
   list-style-type: none;
 }
 .menu-top .menu-1 li a{
+  padding: 1rem 2rem;
   color: var(--white-dev);
+  background-color: #164357; // pomocniczy kolor
 }
 
 /* menu mobile */
@@ -103,9 +105,15 @@ ul.menu-1{
   display: flex;
   flex-direction: column;
 }
-/* .main-navigation ul li.child a:after{
-  border-color: #fff transparent transparent;
-} */
+.main-navigation ul > li.child > a:after{
+    border: inset 6px;
+    content: '';
+    display: inline-block;
+    margin-left: 10px;
+    border-top-style: solid;
+    border-color: #fff transparent transparent;
+}
+
 .main-navigation ul > li > a{
   display: inline-block;
   padding: 0.4rem 0.8rem;
