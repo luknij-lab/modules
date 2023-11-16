@@ -1,23 +1,23 @@
 document.addEventListener('DOMContentLoaded', function () {
     const menuItems = document.querySelectorAll('.menu-item');
 
-    menuItems.forEach(item => {
-      let isOpen = false;
 
-      item.addEventListener('click', function () {
-        if (!isOpen) {
-          // Open submenu on the first click
-          const submenu = this.querySelector('.submenu');
-          if (submenu) {
-            submenu.style.display = 'block';
-            isOpen = true;
-          }
-        } else {
-          // Navigate to the specified page on the second click
-          const page = this.getAttribute('data-page');
-          if (page) {
-            window.location.href = `${page}.html`; // Change this to your actual page URL
-          }
+    menuItems.forEach(item => {
+      
+      let subNav = document.querySelector('.menu-item .submenu');
+
+      const menuLink = document.querySelector('.menu-item a');      
+      
+      item.addEventListener('click', (e) => {
+        let isOpen = item.getAttribute('aria-expanded');
+        
+        if (isOpen == 'false') {
+          // Otwórz menu po pierwszym kliknieciu
+
+          e.preventDefault();
+          item.setAttribute('aria-expanded', 'true');
+          subNav.style.display = "block";
+          
         }
       });
     });
