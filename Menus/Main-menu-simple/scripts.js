@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const menuItems = document.querySelectorAll('.menu-item');
+    const menuItems = document.querySelectorAll('.menu-item-has-children');
 
 
     menuItems.forEach(item => {
@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
           e.preventDefault();
           item.setAttribute('aria-expanded', 'true');
-          subNav.style.display = "block";
           
         }
       });
