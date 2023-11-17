@@ -4,6 +4,10 @@ body{
   margin: 0;
 }
 
+.openedMobileMenu{
+  overflow-y: hidden;
+}
+
 /*
  1. Zmienne
  2. Górny pasek - style ogólne
@@ -105,13 +109,23 @@ ul.menu-1{
   display: flex;
   flex-direction: column;
 }
-.main-navigation ul > li.menu-item-has-children > a:after{
+.main-navigation ul > li[aria-expanded="false"] > a:after{
     border: inset 6px;
     content: '';
     display: inline-block;
-    margin-left: 10px;
+    margin: 10px 10px 0 10px;
     border-top-style: solid;
     border-color: #fff transparent transparent;
+}
+.main-navigation ul > li[aria-expanded="true"] > a:after{
+  transform: rotate(180deg);
+  border: inset 6px;
+  content: '';
+  display: inline-block;
+  margin: 5px 10px 10px 10px;
+  border-top-style: solid;
+  border-color: #fff transparent transparent;
+  transition: 1s;
 }
 
 .main-navigation ul > li > a{
