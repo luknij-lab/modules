@@ -74,7 +74,7 @@ ul.menu-1{
   list-style-type: none;
 }
 .menu-top .menu-1 li a{
-  padding: 1rem 2rem;
+  /* padding: 1rem 2rem; */
   color: var(--white-dev);
   background-color: #164357; // pomocniczy kolor
 }
@@ -105,7 +105,7 @@ ul.menu-1{
   display: flex;
   flex-direction: column;
 }
-.main-navigation ul > li.child > a:after{
+.main-navigation ul > li.menu-item-has-children > a:after{
     border: inset 6px;
     content: '';
     display: inline-block;
@@ -121,12 +121,19 @@ ul.menu-1{
   text-decoration: none;
 }
 
-.main-navigation .sub-menu{
+.submenu{
   list-style-type: none;
 }
-.main-navigation .sub-menu > li > a{
+li[aria-expanded="false"] .submenu{
+  display: none;
+}
+li[aria-expanded="true"] .submenu{
+  display: block;
+}
+.main-navigation .submenu > li > a{
   background-color: #1e5b75;
 }
+
 
 /* .main-navigation .menu-1 li > a{
   display: block;
@@ -197,7 +204,7 @@ ul.menu-1{
   }
   ul.menu-1 ul.sub-menu li:hover a{
     background-color: #12b672;
-  } */
+  } 
 } */
 
 /* 5. BBQ - przycisk menu mobilnego
