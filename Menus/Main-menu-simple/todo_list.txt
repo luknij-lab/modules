@@ -1,0 +1,2 @@
+- po naciśnięciu przycisku X, które zamyka menu mobilne wszystkie otwarte submenu powinny zostać zwinięte.
+- dokończyć stylowanie menu mobilnego.
