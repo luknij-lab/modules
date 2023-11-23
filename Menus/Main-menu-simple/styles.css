@@ -80,19 +80,22 @@ ul.menu-1{
 .menu-top .menu-1 li a{
   /* padding: 1rem 2rem; */
   color: var(--white-dev);
-  background-color: #164357; // pomocniczy kolor
+}
+.menu-top .menu-1 li.current-menu-item a{
+  background-color: #164357; 
 }
 
-/* menu mobile */
+/* 4.1 Menu mobilne
+--------------------------------------------- */
 .main-navigation{
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  display: flex;
+  /*display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   visibility: hidden;
   opacity: 0;
 }
@@ -102,8 +105,12 @@ ul.menu-1{
   opacity: 1;
   transition: 1s;
 }
-.main-navigation ul{
+.main-navigation ul.menu-1{
   padding: 0;
+  margin: 4rem 0 0 0;
+}
+.main-navigation ul.menu-1{
+  /* padding: 2.4rem 0 0 1rem; */
 }
 .main-navigation ul > li {
   display: flex;
@@ -148,6 +155,9 @@ li[aria-expanded="true"] .submenu{
   background-color: #1e5b75;
 }
 
+/*
+4.2 Menu desktopowe
+--------------------------------------------- */
 
 /* .main-navigation .menu-1 li > a{
   display: block;
@@ -172,6 +182,7 @@ li[aria-expanded="true"] .submenu{
     position: relative;
     display: block;
     height: 100%;
+    width: 100%;
   }
   .menu-top .menu-1{
     padding: 0;
