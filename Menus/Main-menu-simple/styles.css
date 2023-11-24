@@ -50,7 +50,6 @@ body{
   }
 }
 
-
 /* 3. Logo - lewa strona górnego paska
 --------------------------------------------- */
 .headerWrap{
@@ -81,9 +80,12 @@ ul.menu-1{
   /* padding: 1rem 2rem; */
   color: var(--white-dev);
 }
-.menu-top .menu-1 li.current-menu-item a{
-  background-color: #164357; 
+.menu-top .menu-1 li a:target{
+  background-color: transparent;
 }
+/* .menu-top .menu-1 li.current-menu-item a{
+  background-color: #164357;
+} */
 
 /* 4.1 Menu mobilne
 --------------------------------------------- */
@@ -116,30 +118,25 @@ ul.menu-1{
   display: flex;
   flex-direction: column;
 }
-.main-navigation ul > li[aria-expanded="false"] > a:after{
-    border: inset 6px;
-    content: '';
-    display: inline-block;
-    margin: 10px 10px 0 10px;
-    border-top-style: solid;
-    border-color: #fff transparent transparent;
-}
-.main-navigation ul > li[aria-expanded="true"] > a:after{
-  transform: rotate(180deg);
-  border: inset 6px;
-  content: '';
-  display: inline-block;
-  margin: 5px 10px 10px 10px;
-  border-top-style: solid;
-  border-color: #fff transparent transparent;
-  transition: 1s;
-}
-
 .main-navigation ul > li > a{
   display: inline-block;
   padding: 0.4rem 0.8rem;
   font-size: 1.8rem;
   text-decoration: none;
+}
+.arrow{
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-left: 10px;
+  transition: 0.4s;
+}
+
+li[aria-expanded="true"] .arrow {
+  transform-origin: 100% 100%;
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
 }
 
 .submenu{
