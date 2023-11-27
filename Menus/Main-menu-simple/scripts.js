@@ -1,43 +1,30 @@
 document.addEventListener('DOMContentLoaded', function () {
     const menuItems = document.querySelectorAll('.menu-item-has-children');
 
+  // prevent parent a tag default behavier
+  menuItems.forEach(item => {
+    
+    let subNav = document.querySelector('.menu-item .submenu');
+    const menuLink = document.querySelector('.menu-item a');      
+    
+    item.addEventListener('click', (e) => {
 
-    menuItems.forEach(item => {
+      let isOpen = item.getAttribute('aria-expanded');
       
-      let subNav = document.querySelector('.menu-item .submenu');
+      if (isOpen == 'false') {
 
-      const menuLink = document.querySelector('.menu-item a');      
-      
-      item.addEventListener('click', (e) => {
-        let isOpen = item.getAttribute('aria-expanded');
-        
-        if (isOpen == 'false') {
-          // Otwórz menu po pierwszym kliknieciu
+        // first click on parent opens submenu
+        e.preventDefault();
+        item.setAttribute('aria-expanded', 'true');
 
-          e.preventDefault();
-          item.setAttribute('aria-expanded', 'true');
-          
-        }
-      });
+      }
+
     });
   });
 
+});
+  
 document.addEventListener("DOMContentLoaded", function(event) {
-
-/*
-Window width checker -------------- */
-
-// let parent_item = document.querySelectorAll("#menu-1 .menu-item-has-children");
-
-// parent_item.forEach( (element) => addEventListener("click", (e) => {
-	
-// 	// let click_aria_change = parent_item.getAttribute('li[aria-expanded]');
-// 	// console.log(click_aria_change);
-
-// 	// if( click_aria_change.getAttribute(false') ){
-// 	// 	e.preventDefault();
-// 	// }
-// }) );
 
 /*
 BBQ ------------------------------- */
@@ -55,9 +42,23 @@ BBQ ------------------------------- */
 
     // change btn look
     bbq_bar.classList.toggle("active-btn");
+    body_html.classList.toggle("openedMobileMenu");
 
     // close and open menu when clicking BBQ btn
     top_menu.classList.toggle("mobile");
+
+    // close all opened submenus if main menu is closed
+    const menuItems = document.querySelectorAll('.menu-item-has-children');
+
+    if(bbq_bar.classList.contains('active-btn') == true){
+      menuItems.forEach(item => {
+        let isOpen = item.getAttribute('aria-expanded');
+      
+        if (isOpen == 'true') {
+          item.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
 	});
 
 });
