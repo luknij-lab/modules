@@ -80,8 +80,8 @@ ul.menu-1{
   /* padding: 1rem 2rem; */
   color: var(--white-dev);
 }
-.menu-top .menu-1 li a:target{
-  background-color: transparent;
+.menu-top .menu-1 li.menu-item-has-children a:active{
+  background-color: none;
 }
 /* .menu-top .menu-1 li.current-menu-item a{
   background-color: #164357;
@@ -103,6 +103,7 @@ ul.menu-1{
 }
 
 .main-navigation.mobile{
+  overflow-y: auto;
   visibility: visible;
   opacity: 1;
   transition: 1s;
