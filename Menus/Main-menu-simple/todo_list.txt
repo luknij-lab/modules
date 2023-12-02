@@ -1,5 +1,5 @@
 + po naciśnięciu przycisku X, które zamyka menu mobilne wszystkie otwarte submenu powinny zostać zwinięte.
 - dokończyć stylowanie menu mobilnego
 + przetestować menu mobilne gdy ilość przycisków nie mieści się na wysokość ekranu
-- ostylować submenu w wersji desktopowej aby otwierało się pod rodzicem
-- skrypt pierwsze klieknięcie otwiera submenu nie powinien działać w wersji desktopowej
++ ostylować submenu w wersji desktopowej aby otwierało się pod rodzicem
++ skrypt pierwsze klieknięcie otwiera submenu nie powinien działać w wersji desktopowej

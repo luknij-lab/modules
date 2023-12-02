@@ -1,29 +1,37 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const menuItems = document.querySelectorAll('.menu-item-has-children');
+  
+  const menuItems = document.querySelectorAll('.menu-item-has-children');
+  let static_window_width = window.innerWidth;
+  
+  let dynamic_width_width = window.onresize;
 
-  // prevent parent a tag default behavier
-  menuItems.forEach(item => {
+  if( static_window_width < 768 || dynamic_width_width || 768 ){
     
-    let subNav = document.querySelector('.menu-item .submenu');
-    const menuLink = document.querySelector('.menu-item a');      
-    
-    item.addEventListener('click', (e) => {
-
-      let isOpen = item.getAttribute('aria-expanded');
+    // prevent parent a tag default behavier
+    menuItems.forEach(item => {
       
-      if (isOpen == 'false') {
+      let subNav = document.querySelector('.menu-item .submenu');
+      const menuLink = document.querySelector('.menu-item a');      
+      
+      item.addEventListener('click', (e) => {
 
-        // first click on parent opens submenu
-        e.preventDefault();
-        item.setAttribute('aria-expanded', 'true');
+        let isOpen = item.getAttribute('aria-expanded');
+        
+        if (isOpen == 'false') {
 
-      }
+          // first click on parent opens submenu
+          e.preventDefault();
+          item.setAttribute('aria-expanded', 'true');
 
+        }
+
+      });
     });
-  });
+
+  }
 
 });
-  
+
 document.addEventListener("DOMContentLoaded", function(event) {
 
 /*
