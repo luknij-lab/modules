@@ -1,11 +1,10 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
   
   const menuItems = document.querySelectorAll('.menu-item-has-children');
   let static_window_width = window.innerWidth;
-  
   let dynamic_width_width = window.onresize;
 
-  if( static_window_width < 768 || dynamic_width_width || 768 ){
+  if( static_window_width < 768 || dynamic_width_width < 768 ){
     
     // prevent parent a tag default behavier
     menuItems.forEach(item => {
@@ -22,15 +21,33 @@ document.addEventListener('DOMContentLoaded', function () {
           // first click on parent opens submenu
           e.preventDefault();
           item.setAttribute('aria-expanded', 'true');
-
+        
         }
 
       });
+
+    }); // end foreach
+
+  } // end if
+
+  window.addEventListener('resize', (event) => {
+  // kod w trakcie pisania ***
+    menuItems.forEach(item => {
+
+      let isOpen = item.getAttribute('aria-expanded');
+
+      if( isOpen == 'true' && dynamic_width_width > 767 ){
+        e.default();
+        item.setAttribute('aria-expanded', 'false');
+      }
     });
+  });  
+  
+  // kod w trakcie pisania ***
 
-  }
+}); // end DOMContentLoaded
 
-});
+
 
 document.addEventListener("DOMContentLoaded", function(event) {
 
@@ -68,5 +85,4 @@ BBQ ------------------------------- */
       });
     }
 	});
-
 });
