@@ -2,9 +2,17 @@ document.addEventListener('DOMContentLoaded', function() {
   
   const menuItems = document.querySelectorAll('.menu-item-has-children');
   let static_window_width = window.innerWidth;
-  let dynamic_width_width = window.onresize;
 
-  if( static_window_width < 768 || dynamic_width_width < 768 ){
+  let width_output;
+
+  function check_window_width(){
+    width_output = window.innerWidth;
+  }
+  window.onresize = check_window_width;
+
+  console.log(width_output);
+
+  if( static_window_width < 768 ){ /*|| dynamic_window_width < 768 */
     
     // prevent parent a tag default behavier
     menuItems.forEach(item => {
@@ -36,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       let isOpen = item.getAttribute('aria-expanded');
 
-      if( isOpen == 'true' && dynamic_width_width > 767 ){
+      if( isOpen == 'true' && dynamic_window_width > 767 ){
         e.default();
         item.setAttribute('aria-expanded', 'false');
       }
@@ -85,4 +93,18 @@ BBQ ------------------------------- */
       });
     }
 	});
+
+  // remove .mobile if window is heigher the 768
+  // window.addEventListener("resize", (event) => {
+  //   let dynamic_window_width = window.onresize;
+    
+  //   console.log(dynamic_window_width);
+    
+
+  //   if ( dynamic_window_width >= 768){
+  //     top_menu.classList.remove("mobile");
+    
+  //   }
+  // });
+
 });
