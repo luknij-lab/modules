@@ -1,3 +1,4 @@
+/* Mobile submenu mechanism ------------------------------- */
 document.addEventListener('DOMContentLoaded', function() {
   
   const menuItems = document.querySelectorAll('.menu-item-has-children');
@@ -44,12 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 }); // end DOM content loaded
 
-
+/* BBQ ------------------------------- */
 
 document.addEventListener("DOMContentLoaded", function(event) {
-
-/*
-BBQ ------------------------------- */
 
 	// Variables - Body targeting
   const body_html = document.querySelector('body');
@@ -83,9 +81,12 @@ BBQ ------------------------------- */
     }
 	});
 
-  // LD - remove classes for mobile menu when the menu mobile was opened and the user change the size of the screen higher the 768
+  /* Resize Cleaner ------------------------------- */
 
   window.addEventListener('resize', function(){
+
+    // LD - remove classes for mobile menu when the menu mobile was opened and the user change the size of the screen higher the 768
+
     let win_width = this.innerWidth;
 
     if( win_width > 768 ){
@@ -98,4 +99,4 @@ BBQ ------------------------------- */
     
   });
 
-});
+}); // end DOM content loaded
