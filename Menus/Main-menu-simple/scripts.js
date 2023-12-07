@@ -3,15 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const menuItems = document.querySelectorAll('.menu-item-has-children');
   let static_window_width = window.innerWidth;
 
-  let width_output;
-
-  function check_window_width(){
-    width_output = window.innerWidth;
-  }
-  window.onresize = check_window_width;
-
-  console.log(width_output);
-
   if( static_window_width < 768 ){ /*|| dynamic_window_width < 768 */
     
     // prevent parent a tag default behavier
@@ -93,6 +84,25 @@ BBQ ------------------------------- */
       });
     }
 	});
+
+  // LD - remove classes for mobile menu when the menu mobile was opened and the user change the size of the screen higher the 768
+
+  window.addEventListener('resize', function(){
+    let win_width = this.innerWidth;
+
+    if( win_width > 768 ){
+      body_html.classList.remove("openedMobileMenu");
+      top_menu.classList.remove("mobile");
+
+      // bbq btn
+      bbq_bar.classList.remove("active-btn");
+    }
+    
+  });
+
+  // =================================================
+  
+  // =================================================
 
   // remove .mobile if window is heigher the 768
   // window.addEventListener("resize", (event) => {
