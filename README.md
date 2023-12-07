@@ -1,11 +1,13 @@
-# modules 
-Repozytorium zawiera moduły do wykorzytania na stronie internetowej.
+# Modules 
+The repository contains modules that can be used separately on the website.
 
-Struktura repozytorium:
+Repository structure:
 
 1. Menus
-- Main menu (simple) - Proste menu dwupoziomowe. Menu mobilne wysówane od góry.
+- Simple two-level menu. The mobile menu appears at the full width and height of the window.
 
+
+# Modules to be made
 2. Offer modules
 - Four column offer module - Simple offer module design for home page as a CTA. 
 
