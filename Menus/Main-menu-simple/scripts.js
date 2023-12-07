@@ -1,50 +1,48 @@
 document.addEventListener('DOMContentLoaded', function() {
   
   const menuItems = document.querySelectorAll('.menu-item-has-children');
-  let static_window_width = window.innerWidth;
 
-  if( static_window_width < 768 ){ /*|| dynamic_window_width < 768 */
+  window.addEventListener('resize', function(){
+    let static_window_width = window.innerWidth;
+    let dynamic_window_width = this.innerWidth;
+
+    if( static_window_width < 768 || dynamic_window_width < 768 ){
     
-    // prevent parent a tag default behavier
-    menuItems.forEach(item => {
-      
-      let subNav = document.querySelector('.menu-item .submenu');
-      const menuLink = document.querySelector('.menu-item a');      
-      
-      item.addEventListener('click', (e) => {
-
-        let isOpen = item.getAttribute('aria-expanded');
+      // prevent parent a tag default behavier
+      menuItems.forEach(item => {
         
-        if (isOpen == 'false') {
-
-          // first click on parent opens submenu
-          e.preventDefault();
-          item.setAttribute('aria-expanded', 'true');
+        let subNav = document.querySelector('.menu-item .submenu');
+        const menuLink = document.querySelector('.menu-item a');      
         
-        }
-
-      });
-
-    }); // end foreach
-
-  } // end if
-
-  window.addEventListener('resize', (event) => {
-  // kod w trakcie pisania ***
-    menuItems.forEach(item => {
-
-      let isOpen = item.getAttribute('aria-expanded');
-
-      if( isOpen == 'true' && dynamic_window_width > 767 ){
-        e.default();
-        item.setAttribute('aria-expanded', 'false');
-      }
-    });
-  });  
+        item.addEventListener('click', (e) => {
   
-  // kod w trakcie pisania ***
+          let isOpen = item.getAttribute('aria-expanded');
+          
+          if (isOpen == 'false') {
+            // first click on parent opens submenu
+            e.preventDefault();
+            item.setAttribute('aria-expanded', 'true');
+          }
+  
+        });
+      }); // end foreach
+  
+    } else if( static_window_width >= 768 || dynamic_window_width >= 768 ){
 
-}); // end DOMContentLoaded
+      menuItems.forEach(item => {
+        let isOpen = item.getAttribute('aria-expanded');
+
+        if (isOpen == 'true') {
+          // first click on parent opens submenu
+          item.setAttribute('aria-expanded', 'false');
+        }
+      });
+      
+    } // end if
+
+  }); // end window event listener
+
+}); // end DOM content loaded
 
 
 
@@ -99,22 +97,5 @@ BBQ ------------------------------- */
     }
     
   });
-
-  // =================================================
-  
-  // =================================================
-
-  // remove .mobile if window is heigher the 768
-  // window.addEventListener("resize", (event) => {
-  //   let dynamic_window_width = window.onresize;
-    
-  //   console.log(dynamic_window_width);
-    
-
-  //   if ( dynamic_window_width >= 768){
-  //     top_menu.classList.remove("mobile");
-    
-  //   }
-  // });
 
 });
