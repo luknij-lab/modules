@@ -2,21 +2,38 @@
 document.addEventListener('DOMContentLoaded', function() {
   
   const menuItems = document.querySelectorAll('.menu-item-has-children');
+  let static_window_width = window.innerWidth;
+
+  if( static_window_width < 768 ){
+    menuItems.forEach(item => {
+      let subNav = document.querySelector('.menu-item .submenu');
+      const menuLink = document.querySelector('.menu-item a');      
+      
+      item.addEventListener('click', (e) => {
+        let isOpen = item.getAttribute('aria-expanded');
+        
+        if (isOpen == 'false') {
+          // first click on parent opens submenu
+          e.preventDefault();
+          item.setAttribute('aria-expanded', 'true');
+        }
+
+      });
+    }); // end foreach
+  }  
 
   window.addEventListener('resize', function(){
-    let static_window_width = window.innerWidth;
+    
     let dynamic_window_width = this.innerWidth;
 
-    if( static_window_width < 768 || dynamic_window_width < 768 ){
+    if( dynamic_window_width < 768 ){
     
       // prevent parent a tag default behavier
       menuItems.forEach(item => {
-        
         let subNav = document.querySelector('.menu-item .submenu');
         const menuLink = document.querySelector('.menu-item a');      
         
         item.addEventListener('click', (e) => {
-  
           let isOpen = item.getAttribute('aria-expanded');
           
           if (isOpen == 'false') {
