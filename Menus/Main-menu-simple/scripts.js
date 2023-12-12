@@ -60,6 +60,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
   }); // end window event listener
 
+  // hover on desktop
+  if( static_window_width >= 768 ){
+    const menuItems = document.querySelectorAll('.menu-item-has-children');
+
+    // hover arrow animate
+    menuItems.forEach(item => {
+      item.addEventListener('mouseover', (event) => {
+        let isOpen = item.getAttribute('aria-expanded');
+
+        if (isOpen == 'false') {
+          // first click on parent opens submenu
+          item.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+    }); //forEach end
+
+  }
+
 }); // end DOM content loaded
 
 /* BBQ ------------------------------- */
