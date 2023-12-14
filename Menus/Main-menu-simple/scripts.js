@@ -31,7 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
       // prevent parent a tag default behavier
       menuItems.forEach(item => {
         let subNav = document.querySelector('.menu-item .submenu');
-        const menuLink = document.querySelector('.menu-item a');      
+        const menuLink = document.querySelector('.menu-item a');
+
         
         item.addEventListener('click', (e) => {
           let isOpen = item.getAttribute('aria-expanded');
@@ -92,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   window.addEventListener('resize', function() {
     let dynamic_window_width = this.innerWidth;
-
+    
     if( dynamic_window_width >= 768 ){
       menuItems.forEach(item => {
         item.addEventListener('mouseover', (event) => {
@@ -120,6 +121,48 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
   });
+
+  /* 
+    window.addEventListener('resize', function() {
+    let dynamic_window_width = this.innerWidth;
+
+    // Mouseover function
+    function handleMouseOver(){
+      menuItems.forEach(item => {
+        let isOpen = item.getAttribute('aria-expanded');
+
+        if (isOpen == 'false') {
+          // first click on parent opens submenu
+          item.setAttribute('aria-expanded', 'true');
+        }
+      });
+    }
+
+    // Mouseout function
+    function handleMouseOut(){
+      menuItems.forEach(item => {
+        let isOpen = item.getAttribute('aria-expanded');
+
+        if (isOpen == 'true') {
+          // first click on parent opens submenu
+          item.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // Lunch hover animation event
+    if( dynamic_window_width >= 768 ){
+      menuItems.forEach(item => {
+        item.addEventListener('mouseover', handleMouseOver)
+      });
+
+      menuItems.forEach(item => {
+        this.addEventListener('mouseout', handleMouseOut)
+      });
+    }
+    
+  });
+  */
 
 }); // end DOM content loaded
 
