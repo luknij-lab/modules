@@ -61,36 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   }); // end window event listener
 
-  // animation when hover on desktop
-  if( static_window_width >= 768 ){
-    const menuItems = document.querySelectorAll('.menu-item-has-children');
-
-    // hover arrow animate
-    menuItems.forEach(item => {
-      item.addEventListener('mouseover', (event) => {
-        let isOpen = item.getAttribute('aria-expanded');
-
-        if (isOpen == 'false') {
-          // first click on parent opens submenu
-          item.setAttribute('aria-expanded', 'true');
-        }
-      });
-
-    }); //forEach end
-
-    menuItems.forEach(item => {
-      item.addEventListener('mouseout', (event) => {
-        let isOpen = item.getAttribute('aria-expanded');
-
-        if (isOpen == 'true') {
-          // first click on parent opens submenu
-          item.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-    }); //forEach end
-  }
-
   window.addEventListener('resize', function() {
     let dynamic_window_width = this.innerWidth;
     
@@ -121,48 +91,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
   });
-
-  /* 
-    window.addEventListener('resize', function() {
-    let dynamic_window_width = this.innerWidth;
-
-    // Mouseover function
-    function handleMouseOver(){
-      menuItems.forEach(item => {
-        let isOpen = item.getAttribute('aria-expanded');
-
-        if (isOpen == 'false') {
-          // first click on parent opens submenu
-          item.setAttribute('aria-expanded', 'true');
-        }
-      });
-    }
-
-    // Mouseout function
-    function handleMouseOut(){
-      menuItems.forEach(item => {
-        let isOpen = item.getAttribute('aria-expanded');
-
-        if (isOpen == 'true') {
-          // first click on parent opens submenu
-          item.setAttribute('aria-expanded', 'false');
-        }
-      });
-    }
-
-    // Lunch hover animation event
-    if( dynamic_window_width >= 768 ){
-      menuItems.forEach(item => {
-        item.addEventListener('mouseover', handleMouseOver)
-      });
-
-      menuItems.forEach(item => {
-        this.addEventListener('mouseout', handleMouseOut)
-      });
-    }
-    
-  });
-  */
 
 }); // end DOM content loaded
 
