@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
 <meta charset="utf-8">
-<title>Moduł - Main menu</title>
+<title>Moduł - Main menu - Oferta</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="keywords" content="Tworzenie stron internetowych">
 <meta name="description" content="">
@@ -10,7 +10,7 @@
 <meta name="author" content="Łukasz Szozda">
 
 <link rel="stylesheet" href="styles.css" />
-
+<script src="scripts.js"></script>
 <!--[if lt IE 9]>
 <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
 <![endif]-->
@@ -24,42 +24,35 @@
 				<div class="headerWrap">
 					<a href="http://www.luknij-design.pl/">
 						<div class="site-branding">
-							<img src="http://www.luknij-design.pl/wp-content/uploads/2023/01/logo.jpg" />
+							<img src="logoipsum-236.svg" />
 						</div>
 					</a>
 				</div>
-				<div class="bbq">
+				<div class="bbq" type="button" aria-haspopup="true" aria-controls="main-menu">
 					<div class="bbq-bar"></div>
 				</div>
 				<div id="site-navigation" class="main-navigation">
-					<nav id="main-menu" class="menu-top">
+					<nav id="main-menu" class="menu-top" role="navigation" aria-label="Main Menu" aria-hidden="true">
 						<ul id="menu-1" class="menu-1">
-							<li><a href="#">Strona główna</a></li>
-							<li class="child"><a href="javascript:void(0)">Oferta</a>
-								<ul class="sub-menu">
-									<li><a href="#">Produkt 1</a></li>
-									<li><a href="#">Produkt 1</a></li>
+							<li class="menu-item">
+								<a href="index.html" aria-current="page">Strona główna</a>
+							</li>
+							<li class="menu-item current-menu-item menu-item-has-children" aria-expanded="false">
+								<a href="oferta.html">Oferta<i class="arrow"></i></a>
+								<ul class="submenu">
+									<li><a href="#">Produkt 1 oferta</a></li>
+									<li><a href="#">Produkt 1 oferta</a></li>
 								</ul>
 							</li>
-							<li class="child"><a href="javascript:void(0)">Przykład</a>
-								<ul class="sub-menu">
-									<li><a href="#">Produkt 1</a></li>
-									<li><a href="#">Produkt 1</a></li>
-									<li><a href="#">Produkt 1</a></li>
-									<li><a href="#">Produkt 1</a></li>
-									<li><a href="#">Produkt 1</a></li>
-									<li><a href="#">Produkt 1</a></li>
+							<li class="menu-item menu-item-has-children" aria-expanded="false">
+								<a href="przyklad.html">Przykład<i class="arrow"></i></a>
+								<ul class="submenu">
+									<li><a href="#">Produkt 1 przykład</a></li>
+									<li><a href="#">Produkt 1 przykład</a></li>
 								</ul>
 							</li>
-							<li><a href="javascript:void(0)">Galeria</a>
-								<ul class="sub-menu">
-									<li><a href="#">Produkt 1</a></li>
-									<li><a href="#">Produkt 1</a></li>
-									<li><a href="#">Produkt 1</a></li>
-									<li><a href="#">Produkt 1</a></li>
-								</ul>
-							</li>
-							<li><a href="#">Kontakt</a></li>
+							<li class="menu-item"><a href="#">Galeria</a></li>
+							<li class="menu-item"><a href="#">Kontakt</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -70,21 +63,18 @@
 	</div>
 
   	<div class="content">
-		<h1>What is Lorem Ipsum?</h1>
-		<p>Window width: <span id="width"></span></p>
+		<h1>Oferta</h1>
 		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-		<h2>Why do we use it?</h2>
+		<h2>Oferta</h2>
 		<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-		<h3>Why do we use it?</h3>
+		<h3>Oferta</h3>
 		<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-		<h4>Why do we use it?</h4>
+		<h4>Oferta</h4>
 		<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-		<h5>Why do we use it?</h5>
+		<h5>Oferta</h5>
 		<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-		<h6>Why do we use it?</h6>
+		<h6>Oferta</h6>
 		<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
   	</div>
-
-	<script src="scripts.js"></script>
 </body>
 </html>

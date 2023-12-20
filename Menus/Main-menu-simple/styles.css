@@ -4,11 +4,17 @@ body{
   margin: 0;
 }
 
+.openedMobileMenu{
+  overflow-y: hidden;
+}
+
 /*
  1. Zmienne
  2. Górny pasek - style ogólne
  3. Logo - lewa strona górnego paska
  4. Menu - prawa strona gównego paska
+ 4.1 Menu mobilne
+ 4.2 Menu desktopowe
  5. BBQ - przycisk menu mobilnego
 
 --------------------------------------------- */
@@ -29,14 +35,8 @@ body{
   display: flex;
   flex-direction: column;
   max-width: 1920px;
+  min-height: 68px;
   margin: 0 auto;
-}
-
-@media screen and (min-width: 768px){
-  .site-header{
-    background-color: var(--dark-blue);
-  }
-  
 }
 
 @media screen and (min-width: 768px){
@@ -47,10 +47,11 @@ body{
   }
 }
 
-
 /* 3. Logo - lewa strona górnego paska
 --------------------------------------------- */
 .headerWrap{
+  display: flex;
+  align-items: center;
   line-height: 0;
   padding: 0.6rem;
   background-color: var(--dark-blue);
@@ -59,10 +60,10 @@ body{
   display: inline-block;
   line-height: 0;
 }
-.headerWrap .site-branding img{
+/* .headerWrap .site-branding img{
   max-width: 100px;
   max-height: 100px;
-}
+} */
 
 /* 4. Menu - prawa strona gównego paska
 --------------------------------------------- */
@@ -76,50 +77,134 @@ ul.menu-1{
 }
 .menu-top .menu-1 li a{
   color: var(--white-dev);
+  height: 100%;
+  align-items: center;
+  display: flex;
+}
+.menu-top .menu-1 li.menu-item-has-children a:active{
+  background-color: none;
+}
+/* .menu-top .menu-1 li.current-menu-item a{
+  background-color: #164357;
+} */
+
+/* 4.1 Menu mobilne
+--------------------------------------------- */
+.main-navigation{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /*display: flex;
+  justify-content: center;
+  align-items: center; */
+  visibility: hidden;
+  opacity: 0;
 }
 
-@media screen and (max-width: 1200px){ /*767px*/
-  /* menu mobile */
+.main-navigation.mobile{
+  overflow-y: auto;
+  visibility: visible;
+  opacity: 1;
+  transition: 1s;
+}
+.main-navigation ul.menu-1{
+  padding: 0;
+  margin: 4rem 0 0 0;
+}
+.main-navigation ul.menu-1{
+  /* padding: 2.4rem 0 0 1rem; */
+}
+.main-navigation ul > li {
+  display: flex;
+  flex-direction: column;
+}
+.main-navigation ul > li > a{
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  font-size: 1.8rem;
+  text-decoration: none;
+}
+.main-navigation ul > li:hover > a{
+  background-color: var(--light-green);
+}
+.arrow{
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-left: 10px;
+  transition: 0.4s;
+}
+
+li[aria-expanded="true"] .arrow {
+  transform-origin: 100% 100%;
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+}
+
+.submenu{
+  list-style-type: none;
+}
+li[aria-expanded="false"] .submenu{
+  display: none;
+}
+li[aria-expanded="true"] .submenu{
+  display: block;
+}
+.main-navigation .submenu > li > a{
+  background-color: #1e5b75;
+}
+
+/*
+4.2 Menu desktopowe
+--------------------------------------------- */
+@media screen and (min-width: 768px){
   .main-navigation{
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    visibility: hidden;
-    opacity: 0;
+    position: relative;
+    visibility: inherit;
+    opacity: inherit;
   }
 
-  .main-navigation.mobile{
-    visibility: visible;
-    opacity: 1;
-    transition: 1s;
+  .main-navigation .menu-top{
+    height: 100%;
   }
-  ul.menu-1{
+
+  .main-navigation ul.menu-1{
+    display: flex;
+    height: 100%;
+    
+    margin: auto;
     padding: 0;
   }
 
-  .main-navigation .menu-1 li > a{
-    display: block;
-    padding: 0.4rem;
-    font-size: 1.4rem;
-    text-decoration: none;
+  .main-navigation ul.menu-1 > li{
+    height: 100%;
+    justify-content: center;
   }
-
-  .sub-menu{
-    display: none;
-  }
-  .sub-menu-active{
+  .main-navigation ul.menu-1 > li:hover .submenu{
     display: block;
   }
 
+  .main-navigation ul.menu-1 > li .submenu{
+    position: absolute;
+    top: 68px;
+    padding: 0;
+  }
 
+  li.menu-item.current-menu-item{
+    background-color: #34e89e;
+  }
+
+  .main-navigation ul > li > a{
+    padding: 0 0.8rem;
+  }
+}
 
 /* menu desktop */
-@media screen and (min-width: 1201px){ /*768px*/
+
+/* @media screen and (min-width: 768px){
   .main-navigation{
     visibility: visible;
     opacity: 1;
@@ -128,6 +213,7 @@ ul.menu-1{
     position: relative;
     display: block;
     height: 100%;
+    width: 100%;
   }
   .menu-top .menu-1{
     padding: 0;
@@ -156,12 +242,8 @@ ul.menu-1{
   }
 
   /* Sub-menu */
-  ul.sub-menu{
+  /* ul.sub-menu{
     display: none;
-  }
-
-  ul.sub-menu.show{
-    display: block;
   }
 
   ul.menu-1 li.child:hover > ul.sub-menu{
@@ -176,14 +258,14 @@ ul.menu-1{
   ul.menu-1 ul.sub-menu > li > a{
     padding: 0.4rem 1rem;
   }
-  ul.menu-1 ul.sub-menu li:hover a{ 
+  ul.menu-1 ul.sub-menu li:hover a{
     background-color: #12b672;
-  }
-}
+  } 
+} */
 
 /* 5. BBQ - przycisk menu mobilnego
 --------------------------------------------- */
-@media screen and (min-width: 1201px){ /*768px*/
+@media screen and (min-width: 768px){
 
   .bbq{
     display: none;
@@ -193,7 +275,7 @@ ul.menu-1{
 .bbq {
   position: absolute;
   z-index: 2;
-  top: 14px;
+  top: 7px;
   right: 1rem;
   width: 40px;
   height: 40px;
