@@ -91,6 +91,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	//   }); //forEach end
 	// }
   
+	/* 
+	 * Ten fragment powoduje nieprawidłowe działanie wersji mobilnej menu
+	 * ===================================================================
+	 */
 	window.addEventListener('resize', function() {
 	  let dynamic_window_width = this.innerWidth;
 	  
@@ -121,6 +125,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	  }
 	  
 	});
+	/* 
+	 * Koniec problematycznej sekcji sktyptu
+	 * ======================================
+	 */
   
 	/* 
 	  window.addEventListener('resize', function() {
