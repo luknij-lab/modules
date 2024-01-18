@@ -25,13 +25,14 @@ document.addEventListener('DOMContentLoaded', function() {
 	window.addEventListener('resize', function(){
 	  
 	  let dynamic_window_width = this.innerWidth;
-		
+  
 	  if( dynamic_window_width < 768 ){
 	  
-		// prevent default behavier
+		// prevent parent a tag default behavier
 		menuItems.forEach(item => {
 		  let subNav = document.querySelector('.menu-item .submenu');
-		  //const menuLink = document.querySelector('.menu-item a');
+		  const menuLink = document.querySelector('.menu-item a');
+  
 		  
 		  item.addEventListener('click', (e) => {
 			let isOpen = item.getAttribute('aria-expanded');
@@ -45,105 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		  });
 		}); // end foreach
 	
-	  }
+	  } else if( static_window_width >= 768 || dynamic_window_width >= 768 ){
   
-	}); // end window event listener
-  
-
-  
-	/* 
-	 * Ten fragment powoduje nieprawidłowe działanie wersji mobilnej menu
-	 * ===================================================================
-	 */
-
-/////////////////////////////////////////////////////
-	// animation when hover on desktop  static
-	// if( static_window_width >= 768 ){
-	//   const menuItems = document.querySelectorAll('.menu-item-has-children');
-  
-	//   // hover arrow animate
-	//   menuItems.forEach(item => {
-	//     item.addEventListener('mouseover', (event) => {
-	//       let isOpen = item.getAttribute('aria-expanded');
-  
-	//       if (isOpen == 'false') {
-	//         // first click on parent opens submenu
-	//         item.setAttribute('aria-expanded', 'true');
-	//       }
-	//     });
-  
-	//   }); //forEach end
-  
-	//   menuItems.forEach(item => {
-	//     item.addEventListener('mouseout', (event) => {
-	//       let isOpen = item.getAttribute('aria-expanded');
-  
-	//       if (isOpen == 'true') {
-	//         // first click on parent opens submenu
-	//         item.setAttribute('aria-expanded', 'false');
-	//       }
-	//     });
-  
-	//   }); //forEach end
-	// }
-
-/////////////////////////////////////////////////////
-	// // animation when hover on desktop dynamic
-
-	// window.addEventListener('resize', function() {
-	// 	let dynamic_window_width = this.innerWidth;
-	
-	// 	if( dynamic_window_width >= 768 ){
-
-	// 	menuItems.forEach(item => {
-	// 		item.addEventListener('mouseover', (event) => {
-	// 		let isOpen = item.getAttribute('aria-expanded');
-
-	// 		if (isOpen == 'false') {
-	// 			// first click on parent opens submenu
-	// 			item.setAttribute('aria-expanded', 'true');
-	// 			}
-	// 		});
-
-	// 	}); //forEach end
-
-	// 		menuItems.forEach(item => {
-	// 			item.addEventListener('mouseout', (event) => {
-	// 			let isOpen = item.getAttribute('aria-expanded');
-
-	// 			if (isOpen == 'true') {
-	// 				// first click on parent opens submenu
-	// 				item.setAttribute('aria-expanded', 'false');
-	// 				}
-	// 			});
-	// 		}); //forEach end
-	// 	}
-	
-	// });
-/////////////////////////////////////////////////////
-	/* 
-	 * Koniec problematycznej sekcji sktyptu
-	 * ======================================
-	 */
-  
-	/* 
-	  window.addEventListener('resize', function() {
-	  let dynamic_window_width = this.innerWidth;
-  
-	  // Mouseover function
-	  function handleMouseOver(){
-		menuItems.forEach(item => {
-		  let isOpen = item.getAttribute('aria-expanded');
-  
-		  if (isOpen == 'false') {
-			// first click on parent opens submenu
-			item.setAttribute('aria-expanded', 'true');
-		  }
-		});
-	  }
-  
-	  // Mouseout function
-	  function handleMouseOut(){
 		menuItems.forEach(item => {
 		  let isOpen = item.getAttribute('aria-expanded');
   
@@ -152,21 +56,10 @@ document.addEventListener('DOMContentLoaded', function() {
 			item.setAttribute('aria-expanded', 'false');
 		  }
 		});
-	  }
+		
+	  } // end if
   
-	  // Lunch hover animation event
-	  if( dynamic_window_width >= 768 ){
-		menuItems.forEach(item => {
-		  item.addEventListener('mouseover', handleMouseOver)
-		});
-  
-		menuItems.forEach(item => {
-		  this.addEventListener('mouseout', handleMouseOut)
-		});
-	  }
-	  
-	});
-	*/
+	}); // end window event listener
   
   }); // end DOM content loaded
   

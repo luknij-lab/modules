@@ -204,6 +204,17 @@ li[aria-expanded="true"] .submenu{
 
 /* menu desktop */
 
+@media screen and (min-width: 768px){
+
+  /* desktop hover menu */
+  .menu-top .menu-1 li:hover i.arrow {
+    transform-origin: 100% 100%;
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+  }
+
+}
+
 /* @media screen and (min-width: 768px){
   .main-navigation{
     visibility: visible;
