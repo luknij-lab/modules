@@ -204,8 +204,6 @@ li[aria-expanded="true"] .submenu{
 
 /* menu desktop */
 
-<<<<<<< HEAD
-=======
 @media screen and (min-width: 768px){
 
   /* desktop hover menu */
@@ -217,7 +215,6 @@ li[aria-expanded="true"] .submenu{
 
 }
 
->>>>>>> workplace
 /* @media screen and (min-width: 768px){
   .main-navigation{
     visibility: visible;
