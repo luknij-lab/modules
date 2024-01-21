@@ -18,9 +18,17 @@ document.addEventListener('DOMContentLoaded', function() {
 			item.setAttribute('aria-expanded', 'true');
 		  }
   
-		});
+		}); // end click event
+		
+		// =============================================================== nowy kod
+		item.addEventListener('mouseover', (e) => {
+			e.preventDefault();
+		}); // end mouseover event
+		// =============================================================== koniec nowy kod
+
 	  }); // end foreach
-	}  
+
+	}
   
 	window.addEventListener('resize', function(){
 	  
@@ -32,8 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		menuItems.forEach(item => {
 		  let subNav = document.querySelector('.menu-item .submenu');
 		  const menuLink = document.querySelector('.menu-item a');
-  
-		  
+
 		  item.addEventListener('click', (e) => {
 			let isOpen = item.getAttribute('aria-expanded');
 			
@@ -43,10 +50,11 @@ document.addEventListener('DOMContentLoaded', function() {
 			  item.setAttribute('aria-expanded', 'true');
 			}
 	
-		  });
+		  }); // end click event 
+
 		}); // end foreach
 	
-	  } else if( static_window_width >= 768 || dynamic_window_width >= 768 ){
+	} else if( static_window_width >= 768 || dynamic_window_width >= 768 ){
   
 		menuItems.forEach(item => {
 		  let isOpen = item.getAttribute('aria-expanded');
@@ -55,10 +63,13 @@ document.addEventListener('DOMContentLoaded', function() {
 			// first click on parent opens submenu
 			item.setAttribute('aria-expanded', 'false');
 		  }
+		  
 		});
 		
-	  } // end if
-  
+	} // end if < 768px
+
+
+
 	}); // end window event listener
   
   }); // end DOM content loaded
