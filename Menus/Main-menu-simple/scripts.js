@@ -20,7 +20,28 @@ document.addEventListener('DOMContentLoaded', function() {
   
 		});
 	  }); // end foreach
-	}  
+	  // =============================================================== nowy kod 
+	}else if( static_window_width > 767){
+  
+		menuItems.forEach(item => {
+		  let isOpen = item.getAttribute('aria-expanded');
+  
+		  if(isOpen == 'true') {
+			// first click on parent opens submenu
+			item.setAttribute('aria-expanded', 'false');
+		  }
+
+		  item.addEventListener('mouseover', (e) => {
+			item.setAttribute('aria-expanded', 'true');
+		  });
+
+		  item.addEventListener('mouseout', (e) => {
+			item.setAttribute('aria-expanded', 'false');
+		  });
+		});
+		
+	} // end if
+	// =============================================================== nowy kod 
   
 	window.addEventListener('resize', function(){
 	  
@@ -46,18 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		  });
 		}); // end foreach
 	
-	  } else if( static_window_width >= 768 || dynamic_window_width >= 768 ){
-  
-		menuItems.forEach(item => {
-		  let isOpen = item.getAttribute('aria-expanded');
-  
-		  if (isOpen == 'true') {
-			// first click on parent opens submenu
-			item.setAttribute('aria-expanded', 'false');
-		  }
-		});
-		
-	  } // end if
+	  }
   
 	}); // end window event listener
   
