@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	  } // end if
   
 	}); // end window event listener
-  
+   
   }); // end DOM content loaded
   
   /* BBQ ------------------------------- */
