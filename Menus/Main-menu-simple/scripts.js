@@ -1,5 +1,12 @@
 /* Mobile submenu mechanism ------------------------------- */
 document.addEventListener('DOMContentLoaded', function() {
+
+	function mouseOver(){
+		item.setAttribute('aria-expanded', 'true');
+	}
+	function mouseOut(){
+		item.setAttribute('aria-expanded', 'false');
+	}
   
 	const menuItems = document.querySelectorAll('.menu-item-has-children');
 	let static_window_width = window.innerWidth;
@@ -19,8 +26,23 @@ document.addEventListener('DOMContentLoaded', function() {
 		  }
   
 		});
+		
 	  }); // end foreach
-	}  
+	} else if( static_window_width >= 768 ){
+
+		menuItems.forEach( item => {
+
+			function mouseOver(){
+				item.setAttribute('aria-expanded', 'true');
+			};
+			function mouseOut(){
+				item.setAttribute('aria-expanded', 'false');
+			};
+
+			item.addEventListener('mouseover', mouseOver);
+			item.addEventListener('mouseout', mouseOut);
+		});
+	};
   
 	window.addEventListener('resize', function(){
 	  
@@ -42,7 +64,9 @@ document.addEventListener('DOMContentLoaded', function() {
 			  e.preventDefault();
 			  item.setAttribute('aria-expanded', 'true');
 			}
-	
+			
+			item.removeEventListener('mouseover', mouseOver);
+			item.removeEventListener('mouseout', mouseOut);
 		  });
 		}); // end foreach
 	
