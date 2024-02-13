@@ -1,9 +1,11 @@
-/* Mobile submenu mechanism ------------------------------- */
+/* Menu mobilne ------------------------------- */
 document.addEventListener('DOMContentLoaded', function() {
   
 	const menuItems = document.querySelectorAll('.menu-item-has-children');
+	const menuItemslink = document.querySelectorAll('.menu-item-has-children a');
 	let static_window_width = window.innerWidth;
   
+	// Gdy strona zostanie wyświetlona w wersji mobilnej pierwsze kliknięcie w rodzica, spowoduje otworzenie podmenu, a drugie kliknięcie uruchomi hiperłącze rodzica.
 	if( static_window_width < 768 ){
 	  menuItems.forEach(item => {
 		let subNav = document.querySelector('.menu-item .submenu');
@@ -13,62 +15,84 @@ document.addEventListener('DOMContentLoaded', function() {
 		  let isOpen = item.getAttribute('aria-expanded');
 		  
 		  if (isOpen == 'false') {
-			// first click on parent opens submenu
 			e.preventDefault();
 			item.setAttribute('aria-expanded', 'true');
 		  }
-  
-		});
-	  }); // end foreach
-	  // =============================================================== nowy kod 
-	}else if( static_window_width > 767){
-  
-		menuItems.forEach(item => {
-		  let isOpen = item.getAttribute('aria-expanded');
-  
-		  if(isOpen == 'true') {
-			// first click on parent opens submenu
-			item.setAttribute('aria-expanded', 'false');
-		  }
+		}); // koniec zdarzenia kliknięcie.
+	  }); // koniec pętli foreach.
+	
+	}
 
-		  item.addEventListener('mouseover', (e) => {
-			item.setAttribute('aria-expanded', 'true');
-		  });
-
-		  item.addEventListener('mouseout', (e) => {
-			item.setAttribute('aria-expanded', 'false');
-		  });
-		});
+	// funkcja zawierająca zdarzenie najechania kursorem myszy na element oraz zdarzenie opuszczenia kursora myszy z obszaru elementu.
+	function handleEvent() {
+		const elements = document.querySelectorAll('.menu-item-has-children');
 		
-	} // end if
-	// =============================================================== nowy kod 
+		elements.forEach(element => {
+		  // Dodajemy obsługę zmiany aria-expanded przy najechaniu myszką.
+		  element.addEventListener('mouseover', () => {
+			element.setAttribute('aria-expanded', 'true');
+		  });
   
+		  // Dodajemy obsługę zmiany aria-expanded przy opuszczeniu obszaru elementu.
+		  element.addEventListener('mouseout', () => {
+			element.setAttribute('aria-expanded', 'false');
+		  });
+		});
+	  }
+  
+	// funkcja sprawdzająca szerokość ekranu i gdy szerokość jest >= 768 px to rejestruje funkcję handleEvent, a gdy szerokość ekranu jest < 768 px to usuwa funkcję handleEvent.
+	function checkWindowSize() {
+		window.addEventListener('resize', function(){
+			let dynamic_window_width = this.innerWidth;
+	  
+			if( dynamic_window_width >= 768 ){
+				window.addEventListener('resize', handleEvent);
+			}else{
+				window.removeEventListener('resize', handleEvent);
+			}
+		});
+	  }
+  
+	// uruchomienie funkcji
+	checkWindowSize();
+	window.addEventListener('resize', checkWindowSize);
+
+	// funkcja która dynamicznie sprawdza szerokość okna
 	window.addEventListener('resize', function(){
-	  
+
 	  let dynamic_window_width = this.innerWidth;
-  
+
+	  // jeśli szerokość ekranu zostanie zmniejszona i będzie < 768 px. Pierwsze kliknięcie w rodzica otwiera submenu, drugie uruchamia hiperłącze rodzica.
 	  if( dynamic_window_width < 768 ){
-	  
-		// prevent parent a tag default behavier
 		menuItems.forEach(item => {
 		  let subNav = document.querySelector('.menu-item .submenu');
 		  const menuLink = document.querySelector('.menu-item a');
-  
-		  
+
 		  item.addEventListener('click', (e) => {
 			let isOpen = item.getAttribute('aria-expanded');
 			
 			if (isOpen == 'false') {
-			  // first click on parent opens submenu
 			  e.preventDefault();
 			  item.setAttribute('aria-expanded', 'true');
 			}
+		  }); // koniec zdarzenia
+		}); // koniec pętli foreach
 	
-		  });
-		}); // end foreach
-	
-	  }
+	// jeśli szerokość ekranu zostanie zwiększona, a wcześniej użytkownik w wersji mobilnej otworzy submenu, submenu zostanie zamknięte.
+	}else if( dynamic_window_width >= 768 ){
   
+		menuItems.forEach(item => {
+		  let isOpen = item.getAttribute('aria-expanded');
+  
+		  if (isOpen == 'true') {
+			// first click on parent opens submenu
+			item.setAttribute('aria-expanded', 'false');
+		  }
+		});
+	} // koniec warunków if
+
+
+
 	}); // end window event listener
   
   }); // end DOM content loaded
