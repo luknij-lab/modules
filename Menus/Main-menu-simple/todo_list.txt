@@ -1,7 +1,10 @@
 + po naciśnięciu przycisku X, które zamyka menu mobilne wszystkie otwarte submenu powinny zostać zwinięte.
-- dokończyć stylowanie menu mobilnego
-+ przetestować menu mobilne gdy ilość przycisków nie mieści się na wysokość ekranu
-+ ostylować submenu w wersji desktopowej aby otwierało się pod rodzicem
-+ skrypt pierwsze klieknięcie otwiera submenu nie powinien działać w wersji desktopowej
-+ Po otworzeniu submenu w mobile i przejściu do desktop submenu jest otwarte. po przejściu powinno zmieniać się aria-expanded="false" na false
-- w mobile po otworzeniu jednego submenu inne otwarte submenu powinno się zamykać
++ dokończyć stylowanie menu mobilnego.
++ przetestować menu mobilne gdy ilość przycisków nie mieści się na wysokość ekranu.
++ ostylować submenu w wersji desktopowej aby otwierało się pod rodzicem.
++ skrypt pierwsze klieknięcie otwiera submenu nie powinien działać w wersji desktopowej.
++ Po otworzeniu submenu w mobile i przejściu do desktop submenu jest otwarte. Po przejściu powinno zmieniać się aria-expanded="false" na false.
+
+- w mobile po otworzeniu jednego submenu inne otwarte submenu powinno się zamykać.
+- otworzenie menu w wersji mobilnej i rozszerzeniu okna do szerokości >= 768 px, wciąż pozostaje mechanizm (pierwsze kliknięcie w rodzica otwiera submenu, a drugie kliknięcie odpala hiperłącze), do pierwszego przeładowania strony. Należy przerobić funkcię preventDefault() w celu naprawy tej sytuacji.
+
