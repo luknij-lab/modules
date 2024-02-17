@@ -7,4 +7,5 @@
 
 - w mobile po otworzeniu jednego submenu inne otwarte submenu powinno się zamykać.
 - otworzenie menu w wersji mobilnej i rozszerzeniu okna do szerokości >= 768 px, wciąż pozostaje mechanizm (pierwsze kliknięcie w rodzica otwiera submenu, a drugie kliknięcie odpala hiperłącze), do pierwszego przeładowania strony. Należy przerobić funkcię preventDefault() w celu naprawy tej sytuacji.
-
+- dezaktywować reakcję na przesuwanie myszki, która występuje nadal po zmiejszeniu szerokości okna poniżej 768 px
+- na desktopie dodać możliwość dodania klasy np. sticky dla sticky menu
