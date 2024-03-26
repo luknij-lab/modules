@@ -9,22 +9,26 @@ document.addEventListener('DOMContentLoaded', function() {
 	if( static_window_width < 768 ){
 	  menuItems.forEach(item => {
 		let subNav = document.querySelector('.menu-item .submenu');
-		const menuLink = document.querySelector('.menu-item a');      
-		
-		item.addEventListener('click', (e) => {
-		  let isOpen = item.getAttribute('aria-expanded');
-		  
-		  if (isOpen == 'false') {
-			e.preventDefault();
-			item.setAttribute('aria-expanded', 'true');
-		  }
-		}); // koniec zdarzenia kliknięcie.
+		const menuLink = document.querySelector('.menu-item a');
+
+		//////////////////////////
+		// prevent default behavior function
+		const preventListener = function(e){
+			let isOpen = item.getAttribute('aria-expanded');
+
+			if(isOpen == 'false'){
+				e.preventDefault();
+				item.setAttribute('aria-expanded', 'true');
+			}
+		}
+		item.addEventListener('click', preventListener);
+
+		//////////////////////////
 	  }); // koniec pętli foreach.
-	
 	}
 
 	// funkcja zawierająca zdarzenie najechania kursorem myszy na element oraz zdarzenie opuszczenia kursora myszy z obszaru elementu.
-	function handleEvent() {
+	function mouseOverMouseOut() {
 		const elements = document.querySelectorAll('.menu-item-has-children');
 		
 		elements.forEach(element => {
@@ -40,21 +44,42 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	  }
   
-	// funkcja sprawdzająca szerokość ekranu i gdy szerokość jest >= 768 px to rejestruje funkcję handleEvent, a gdy szerokość ekranu jest < 768 px to usuwa funkcję handleEvent.
+	// funkcja sprawdzająca szerokość ekranu i gdy szerokość jest >= 768 px to rejestruje funkcję mouseOverMouseOut, a gdy szerokość ekranu jest < 768 px to usuwa funkcję mouseOverMouseOut.
 	function checkWindowSize() {
 		window.addEventListener('resize', function(){
 			let dynamic_window_width = this.innerWidth;
 	  
 			if( dynamic_window_width >= 768 ){
-				window.addEventListener('resize', handleEvent);
+				window.addEventListener('resize', mouseOverMouseOut);
+				//window.removeEventListener('click', preventListener);
 			}else{
-				window.removeEventListener('resize', handleEvent);
+				// chwilowo zakomentowane
+				//window.removeEventListener('resize', mouseOverMouseOut);
+				menuItems.forEach(item => {
+					let subNav = document.querySelector('.menu-item .submenu');
+					const menuLink = document.querySelector('.menu-item a');
+			
+					//////////////////////////
+					// prevent default behavior function
+					const preventListener = function(e){
+						let isOpen = item.getAttribute('aria-expanded');
+			
+						if(isOpen == 'false'){
+							e.preventDefault();
+							item.setAttribute('aria-expanded', 'true');
+						}
+					}
+					item.addEventListener('click', preventListener);
+			
+					//////////////////////////
+				  }); // koniec pętli foreach.
 			}
 		});
 	  }
   
 	// uruchomienie funkcji
-	checkWindowSize();
+	//checkWindowSize();
+	// chwilowo zakomentowane
 	window.addEventListener('resize', checkWindowSize);
 
 	// funkcja która dynamicznie sprawdza szerokość okna
