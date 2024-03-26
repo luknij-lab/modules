@@ -9,22 +9,23 @@ document.addEventListener('DOMContentLoaded', function() {
 	if( static_window_width < 768 ){
 	  menuItems.forEach(item => {
 		let subNav = document.querySelector('.menu-item .submenu');
-		const menuLink = document.querySelector('.menu-item a');      
-		
-		item.addEventListener('click', (e) => {
-		  let isOpen = item.getAttribute('aria-expanded');
-		  
-		  if (isOpen == 'false') {
-			e.preventDefault();
-			item.setAttribute('aria-expanded', 'true');
-		  }
-		}); // koniec zdarzenia kliknięcie.
+		const menuLink = document.querySelector('.menu-item a');
+
+		// Zapobieganie domyślnemu zdarzeniu
+		const preventListener = function(e){
+			let isOpen = item.getAttribute('aria-expanded');
+
+			if(isOpen == 'false'){
+				e.preventDefault();
+				item.setAttribute('aria-expanded', 'true');
+			}
+		}
+		item.addEventListener('click', preventListener);
 	  }); // koniec pętli foreach.
-	
 	}
 
 	// funkcja zawierająca zdarzenie najechania kursorem myszy na element oraz zdarzenie opuszczenia kursora myszy z obszaru elementu.
-	function handleEvent() {
+	function mouseOverMouseOut() {
 		const elements = document.querySelectorAll('.menu-item-has-children');
 		
 		elements.forEach(element => {
@@ -39,23 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		  });
 		});
 	  }
-  
-	// funkcja sprawdzająca szerokość ekranu i gdy szerokość jest >= 768 px to rejestruje funkcję handleEvent, a gdy szerokość ekranu jest < 768 px to usuwa funkcję handleEvent.
-	function checkWindowSize() {
-		window.addEventListener('resize', function(){
-			let dynamic_window_width = this.innerWidth;
-	  
-			if( dynamic_window_width >= 768 ){
-				window.addEventListener('resize', handleEvent);
-			}else{
-				window.removeEventListener('resize', handleEvent);
-			}
-		});
-	  }
-  
-	// uruchomienie funkcji
-	checkWindowSize();
-	window.addEventListener('resize', checkWindowSize);
 
 	// funkcja która dynamicznie sprawdza szerokość okna
 	window.addEventListener('resize', function(){
@@ -63,6 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	  let dynamic_window_width = this.innerWidth;
 
 	  // jeśli szerokość ekranu zostanie zmniejszona i będzie < 768 px. Pierwsze kliknięcie w rodzica otwiera submenu, drugie uruchamia hiperłącze rodzica.
+
+	  // TRZEBA PRZEORGANIZOWAĆ TO ZDARZENIE ABY MOŻNA BYŁO JE USUNĄC PODCZAS PRZEJŚCIA DO SZERSZEGO EKRAN 
 	  if( dynamic_window_width < 768 ){
 		menuItems.forEach(item => {
 		  let subNav = document.querySelector('.menu-item .submenu');
@@ -84,12 +70,32 @@ document.addEventListener('DOMContentLoaded', function() {
 			menuItems.forEach(item => {
 			let isOpen = item.getAttribute('aria-expanded');
 	
-			if (isOpen == 'true') {
-				// first click on parent opens submenu
-				item.setAttribute('aria-expanded', 'false');
-			}
-			
+				if (isOpen == 'true') {
+					// first click on parent opens submenu
+					item.setAttribute('aria-expanded', 'false');
+				}
 			});
+
+			window.removeEventListener('resize', mouseOverMouseOut);
+
+			menuItems.forEach(item => {
+				let subNav = document.querySelector('.menu-item .submenu');
+				const menuLink = document.querySelector('.menu-item a');
+		
+				// prevent default behavior function
+				const preventListener = function(e){
+					let isOpen = item.getAttribute('aria-expanded');
+		
+					if(isOpen == 'false'){
+						e.preventDefault();
+						item.setAttribute('aria-expanded', 'true');
+					}
+				}
+				item.addEventListener('click', preventListener);
+			  }); // koniec pętli foreach.
+			  
+			  console.log(dynamic_window_width);
+
 		} // koniec warunków if
 	}); // koniec funkcji dynamicznie sprawdzającej szerokość okna przegladarki.
   
