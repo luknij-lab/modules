@@ -1,32 +1,11 @@
-/* ------------------------------- */
-function prevFirstClick(){
-	menuItems.forEach(item => {
-		// prevent default behavior function
-		const preventListener = function(e){
-			let isOpen = item.getAttribute('aria-expanded');
-
-			if(isOpen == 'false'){
-				item.setAttribute('aria-expanded', 'true');
-				e.preventDefault();
-				e.stopPropagation();
-				return false;
-			}
-		}
-		item.addEventListener('click', preventListener, true );
-	}); // koniec pętli foreach.
-};
-
 // STATIC
 document.addEventListener('DOMContentLoaded', function() {
 
 	/* Deklaracja zmiennych ------------------------------- */
-	const menuItems = document.querySelectorAll('.menu-item-has-children');
 	let static_window_width = window.innerWidth;
+	const menuItems = document.querySelectorAll('.menu-item-has-children');
 
-	//const menuItemslink = document.querySelectorAll('.menu-item-has-children a');
-	
-
-	/*  ------------------------------- */
+	/* ------------------------------- */
 	function prevFirstClick(){
 		menuItems.forEach(item => {
 			// prevent default behavior function
@@ -40,14 +19,36 @@ document.addEventListener('DOMContentLoaded', function() {
 					return false;
 				}
 			}
-			item.addEventListener('click', preventListener, true );
+			item.addEventListener('click', preventListener );
 		}); // koniec pętli foreach.
 	};
 
+	// nowy kod
+	var prev_firstClick = functionprevFirstClick(event) { 
+		menuItems.forEach(item => {
+			// prevent default behavior function
+			const preventListener = function(e){
+				let isOpen = item.getAttribute('aria-expanded');
+
+				if(isOpen == 'false'){
+					item.setAttribute('aria-expanded', 'true');
+					e.preventDefault();
+					e.stopPropagation();
+					return false;
+				}
+			}
+			item.addEventListener('click', preventListener );
+		}); // koniec pętli foreach.
+	};
+	var myListenerWithContext = myListener.bind(this);
+	element.addEventListener('event', myListenerWithContext);
+	element.removeEventListener('event', myListenerWithContext);
+	// koniec nowy kod
+
 	// Gdy strona zostanie wyświetlona w wersji mobilnej pierwsze kliknięcie w rodzica, spowoduje otworzenie podmenu, a drugie kliknięcie uruchomi hiperłącze rodzica.
 	if( static_window_width < 768 ){
-		window.addEventListener('load', prevFirstClick, {once: true} );
-	  }
+		window.addEventListener('DOMContentLoaded', prevFirstClick, {once: true} );
+	}
 });
 // END
 
@@ -59,9 +60,11 @@ window.addEventListener('resize', function(){
 
 	console.log(dynamic_window_width);
 	
-	if( dynamic_window_width >= 768 ){
-		//window.removeEventListener('load', prevFirstClick, {once: true});
-
+	if( dynamic_window_width < 768 ){
+		window.addEventListener('DOMContentLoaded', prevFirstClick );
+	}else{
+		window.removeEventListener('DOMContentLoaded', prevFirstClick );
+		
 		menuItems.forEach(item => {
 			let isOpen = item.getAttribute('aria-expanded');
 	
@@ -70,6 +73,7 @@ window.addEventListener('resize', function(){
 				item.setAttribute('aria-expanded', 'false');
 			}
 		});
+		
 	}
 
 });
