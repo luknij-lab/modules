@@ -1,105 +1,138 @@
 /* Menu mobilne ------------------------------- */
+function prevFirstClick(){
+	menuItems.forEach(item => {
+		// prevent default behavior function
+		const preventListener = function(e){
+			let isOpen = item.getAttribute('aria-expanded');
+
+			if(isOpen == 'false'){
+				item.setAttribute('aria-expanded', 'true');
+				e.preventDefault();
+				e.stopPropagation();
+				return false;
+			}
+		}
+		item.addEventListener('click', preventListener, true );
+	  }); // koniec pętli foreach.
+  };
+
+
+
+
+// STATIC
 document.addEventListener('DOMContentLoaded', function() {
   
 	const menuItems = document.querySelectorAll('.menu-item-has-children');
 	const menuItemslink = document.querySelectorAll('.menu-item-has-children a');
 	let static_window_width = window.innerWidth;
   
+	function prevFirstClick(){
+		menuItems.forEach(item => {
+			// prevent default behavior function
+			const preventListener = function(e){
+				let isOpen = item.getAttribute('aria-expanded');
+	
+				if(isOpen == 'false'){
+					item.setAttribute('aria-expanded', 'true');
+					e.preventDefault();
+					e.stopPropagation();
+					return false;
+				}
+			}
+			item.addEventListener('click', preventListener, true );
+		  }); // koniec pętli foreach.
+	  };
+
 	// Gdy strona zostanie wyświetlona w wersji mobilnej pierwsze kliknięcie w rodzica, spowoduje otworzenie podmenu, a drugie kliknięcie uruchomi hiperłącze rodzica.
 	if( static_window_width < 768 ){
-	  menuItems.forEach(item => {
-		let subNav = document.querySelector('.menu-item .submenu');
-		const menuLink = document.querySelector('.menu-item a');
-
-		// Zapobieganie domyślnemu zdarzeniu
-		const preventListener = function(e){
-			let isOpen = item.getAttribute('aria-expanded');
-
-			if(isOpen == 'false'){
-				e.preventDefault();
-				item.setAttribute('aria-expanded', 'true');
-			}
-		}
-		item.addEventListener('click', preventListener);
-	  }); // koniec pętli foreach.
-	}
-
-	// funkcja zawierająca zdarzenie najechania kursorem myszy na element oraz zdarzenie opuszczenia kursora myszy z obszaru elementu.
-	function mouseOverMouseOut() {
-		const elements = document.querySelectorAll('.menu-item-has-children');
-		
-		elements.forEach(element => {
-		  // Dodajemy obsługę zmiany aria-expanded przy najechaniu myszką.
-		  element.addEventListener('mouseover', () => {
-			element.setAttribute('aria-expanded', 'true');
-		  });
-  
-		  // Dodajemy obsługę zmiany aria-expanded przy opuszczeniu obszaru elementu.
-		  element.addEventListener('mouseout', () => {
-			element.setAttribute('aria-expanded', 'false');
-		  });
-		});
+		window.addEventListener('load', prevFirstClick, {once: true} );
 	  }
+});
 
-	// funkcja która dynamicznie sprawdza szerokość okna
-	window.addEventListener('resize', function(){
 
-	  let dynamic_window_width = this.innerWidth;
 
-	  // jeśli szerokość ekranu zostanie zmniejszona i będzie < 768 px. Pierwsze kliknięcie w rodzica otwiera submenu, drugie uruchamia hiperłącze rodzica.
-
-	  // TRZEBA PRZEORGANIZOWAĆ TO ZDARZENIE ABY MOŻNA BYŁO JE USUNĄC PODCZAS PRZEJŚCIA DO SZERSZEGO EKRAN 
-	  if( dynamic_window_width < 768 ){
-		menuItems.forEach(item => {
-		  let subNav = document.querySelector('.menu-item .submenu');
-		  const menuLink = document.querySelector('.menu-item a');
-
-		  item.addEventListener('click', (e) => {
-			let isOpen = item.getAttribute('aria-expanded');
-			
-			if (isOpen == 'false') {
-			  e.preventDefault();
-			  item.setAttribute('aria-expanded', 'true');
-			}
-		  }); // koniec zdarzenia
-		}); // koniec pętli foreach
+// DINAMIC
+window.addEventListener('resize', function(){
+	let dynamic_window_width = this.innerWidth;
+	console.log(dynamic_window_width);
 	
-		// jeśli szerokość ekranu zostanie zwiększona, a wcześniej użytkownik w wersji mobilnej otworzy submenu, submenu zostanie zamknięte.
-		}else if( dynamic_window_width >= 768 ){
-	
-			menuItems.forEach(item => {
-			let isOpen = item.getAttribute('aria-expanded');
-	
-				if (isOpen == 'true') {
-					// first click on parent opens submenu
-					item.setAttribute('aria-expanded', 'false');
-				}
-			});
+	if( dynamic_window_width >= 768 ){
+		window.removeEventListener('load', prevFirstClick, {once: true});
+	}
+});
 
-			window.removeEventListener('resize', mouseOverMouseOut);
 
-			menuItems.forEach(item => {
-				let subNav = document.querySelector('.menu-item .submenu');
-				const menuLink = document.querySelector('.menu-item a');
+////// END
+
+
+
+
+	// // funkcja która dynamicznie sprawdza szerokość okna
+	// window.addEventListener('resize', function(){
+
+	//   let dynamic_window_width = this.innerWidth;
+
+	//   // jeśli szerokość ekranu zostanie zmniejszona i będzie < 768 px. Pierwsze kliknięcie w rodzica otwiera submenu, drugie uruchamia hiperłącze rodzica.
+	//   if( dynamic_window_width < 768 ){
 		
-				// prevent default behavior function
-				const preventListener = function(e){
-					let isOpen = item.getAttribute('aria-expanded');
+	// 	// nowy kod
+	// 		window.addEventListener('resize', prevFirstClick);
+	// 	// koniec nowy kod
+	
+	// 	// jeśli szerokość ekranu zostanie zwiększona, a wcześniej użytkownik w wersji mobilnej otworzy submenu, submenu zostanie zamknięte.
+	// 	}else if( dynamic_window_width >= 768 ){
+	
+	// 		menuItems.forEach(item => {
+	// 			let isOpen = item.getAttribute('aria-expanded');
 		
-					if(isOpen == 'false'){
-						e.preventDefault();
-						item.setAttribute('aria-expanded', 'true');
-					}
-				}
-				item.addEventListener('click', preventListener);
-			  }); // koniec pętli foreach.
-			  
-			  console.log(dynamic_window_width);
+	// 			if (isOpen == 'true') {
+	// 				// first click on parent opens submenu
+	// 				item.setAttribute('aria-expanded', 'false');
+	// 			}
+	// 		});
 
-		} // koniec warunków if
-	}); // koniec funkcji dynamicznie sprawdzającej szerokość okna przegladarki.
+	// 		// Nowy kod
+	// 		menuItems.forEach(item => {
+	// 			// prevent default behavior function
+	// 			const preventListener = function(e){
+	// 				let isOpen = item.getAttribute('aria-expanded');
+		
+	// 				if(isOpen == 'false'){
+	// 					item.setAttribute('aria-expanded', 'true');
+	// 					e.preventDefault();
+	// 					e.stopPropagation();
+	// 					return false;
+	// 				}
+	// 			}
+	// 			item.addEventListener('click', preventListener, true );
+	// 		  }); // koniec pętli foreach.
+
+	// 		// window.removeEventListener('resize', prevFirstClick);
+	// 		// Koniec nowy kod
+
+	// 	} // koniec warunków if
+	// }); // koniec funkcji dynamicznie sprawdzającej szerokość okna przegladarki.
   
-}); // koniec DOMContentLoaded
+// }); // koniec DOMContentLoaded
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   /* BBQ ------------------------------- */
   
