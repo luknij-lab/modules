@@ -9,46 +9,29 @@ document.addEventListener('DOMContentLoaded', function() {
 	function prevFirstClick(){
 		menuItems.forEach(item => {
 			// prevent default behavior function
-			const preventListener = function(e){
+			const preventListener = function(event){
 				let isOpen = item.getAttribute('aria-expanded');
 
 				if(isOpen == 'false'){
 					item.setAttribute('aria-expanded', 'true');
-					e.preventDefault();
-					e.stopPropagation();
-					return false;
+
+					if(event.preventDefault){
+						event.preventDefault();
+						event.stopPropagation();
+					}else{
+						event.returnValue = false;
+					}
 				}
 			}
-			item.addEventListener('click', preventListener );
+			item.addEventListener('click', preventListener, false );
 		}); // koniec pętli foreach.
 	};
-
-	// nowy kod
-	var prev_firstClick = functionprevFirstClick(event) { 
-		menuItems.forEach(item => {
-			// prevent default behavior function
-			const preventListener = function(e){
-				let isOpen = item.getAttribute('aria-expanded');
-
-				if(isOpen == 'false'){
-					item.setAttribute('aria-expanded', 'true');
-					e.preventDefault();
-					e.stopPropagation();
-					return false;
-				}
-			}
-			item.addEventListener('click', preventListener );
-		}); // koniec pętli foreach.
-	};
-	var myListenerWithContext = myListener.bind(this);
-	element.addEventListener('event', myListenerWithContext);
-	element.removeEventListener('event', myListenerWithContext);
-	// koniec nowy kod
 
 	// Gdy strona zostanie wyświetlona w wersji mobilnej pierwsze kliknięcie w rodzica, spowoduje otworzenie podmenu, a drugie kliknięcie uruchomi hiperłącze rodzica.
 	if( static_window_width < 768 ){
-		window.addEventListener('DOMContentLoaded', prevFirstClick, {once: true} );
+		window.addEventListener('DOMContentLoaded', prevFirstClick );
 	}
+	
 });
 // END
 
@@ -57,13 +40,34 @@ window.addEventListener('resize', function(){
 
 	const menuItems = document.querySelectorAll('.menu-item-has-children');
 	let dynamic_window_width = this.innerWidth;
-
 	console.log(dynamic_window_width);
+
+	/* ------------------------------- */
+	function prevFirstClick(){
+		menuItems.forEach(item => {
+			// prevent default behavior function
+			const preventListener = function(event){
+				let isOpen = item.getAttribute('aria-expanded');
+
+				if(isOpen == 'false'){
+					item.setAttribute('aria-expanded', 'true');
+
+					if(event.preventDefault){
+						event.preventDefault();
+						event.stopPropagation();
+					}else{
+						event.returnValue = false;
+					}
+				}
+			}
+			item.addEventListener('click', preventListener, true );
+		}); // koniec pętli foreach.
+	};
 	
 	if( dynamic_window_width < 768 ){
-		window.addEventListener('DOMContentLoaded', prevFirstClick );
+		window.addEventListener('click', prevFirstClick );
 	}else{
-		window.removeEventListener('DOMContentLoaded', prevFirstClick );
+		window.removeEventListener('click', prevFirstClick );
 		
 		menuItems.forEach(item => {
 			let isOpen = item.getAttribute('aria-expanded');
