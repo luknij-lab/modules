@@ -1,4 +1,4 @@
-// STATIC
+// Obsługa statyczna
 document.addEventListener('DOMContentLoaded', function() {
 
 	/* Deklaracja zmiennych ------------------------------- */
@@ -33,9 +33,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 	
 });
-// END
+// koniec obsługi statycznej
 
-// DINAMIC
+// Obsługa dynamiczna
 window.addEventListener('resize', function(){
 
 	const menuItems = document.querySelectorAll('.menu-item-has-children');
@@ -81,78 +81,8 @@ window.addEventListener('resize', function(){
 	}
 
 });
-// END
+// koniec obsługi dynamicznej
 
-
-
-
-	// // funkcja która dynamicznie sprawdza szerokość okna
-	// window.addEventListener('resize', function(){
-
-	//   let dynamic_window_width = this.innerWidth;
-
-	//   // jeśli szerokość ekranu zostanie zmniejszona i będzie < 768 px. Pierwsze kliknięcie w rodzica otwiera submenu, drugie uruchamia hiperłącze rodzica.
-	//   if( dynamic_window_width < 768 ){
-		
-	// 	// nowy kod
-	// 		window.addEventListener('resize', prevFirstClick);
-	// 	// koniec nowy kod
-	
-	// 	// jeśli szerokość ekranu zostanie zwiększona, a wcześniej użytkownik w wersji mobilnej otworzy submenu, submenu zostanie zamknięte.
-	// 	}else if( dynamic_window_width >= 768 ){
-	
-	// 		menuItems.forEach(item => {
-	// 			let isOpen = item.getAttribute('aria-expanded');
-		
-	// 			if (isOpen == 'true') {
-	// 				// first click on parent opens submenu
-	// 				item.setAttribute('aria-expanded', 'false');
-	// 			}
-	// 		});
-
-	// 		// Nowy kod
-	// 		menuItems.forEach(item => {
-	// 			// prevent default behavior function
-	// 			const preventListener = function(e){
-	// 				let isOpen = item.getAttribute('aria-expanded');
-		
-	// 				if(isOpen == 'false'){
-	// 					item.setAttribute('aria-expanded', 'true');
-	// 					e.preventDefault();
-	// 					e.stopPropagation();
-	// 					return false;
-	// 				}
-	// 			}
-	// 			item.addEventListener('click', preventListener, true );
-	// 		  }); // koniec pętli foreach.
-
-	// 		// window.removeEventListener('resize', prevFirstClick);
-	// 		// Koniec nowy kod
-
-	// 	} // koniec warunków if
-	// }); // koniec funkcji dynamicznie sprawdzającej szerokość okna przegladarki.
-  
-// }); // koniec DOMContentLoaded
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
   /* BBQ ------------------------------- */
   
   document.addEventListener("DOMContentLoaded", function(event) {
