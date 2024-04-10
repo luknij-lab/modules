@@ -5,10 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	let static_window_width = window.innerWidth;
 	const menuItems = document.querySelectorAll('.menu-item-has-children');
 
-	/* ------------------------------- */
+	/* Zapobiega domyślemu zdarzeniu kliknięcia w hiperłącze przycisku menu ------------------------------- */
 	function prevFirstClick(){
 		menuItems.forEach(item => {
-			// prevent default behavior function
 			const preventListener = function(event){
 				let isOpen = item.getAttribute('aria-expanded');
 
@@ -24,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				}
 			}
 			item.addEventListener('click', preventListener, false );
-		}); // koniec pętli foreach.
+		});
 	};
 
 	// Gdy strona zostanie wyświetlona w wersji mobilnej pierwsze kliknięcie w rodzica, spowoduje otworzenie podmenu, a drugie kliknięcie uruchomi hiperłącze rodzica.
@@ -42,7 +41,7 @@ window.addEventListener('resize', function(){
 	let dynamic_window_width = this.innerWidth;
 	console.log(dynamic_window_width);
 
-	/* ------------------------------- */
+	/* Zapobiega domyślemu zdarzeniu kliknięcia w hiperłącze przycisku menu ------------------------------- */
 	function prevFirstClick(){
 		menuItems.forEach(item => {
 			// prevent default behavior function
@@ -73,7 +72,6 @@ window.addEventListener('resize', function(){
 			let isOpen = item.getAttribute('aria-expanded');
 	
 			if (isOpen == 'true') {
-				// first click on parent opens submenu
 				item.setAttribute('aria-expanded', 'false');
 			}
 		});
@@ -81,7 +79,6 @@ window.addEventListener('resize', function(){
 	}
 
 });
-// koniec obsługi dynamicznej
 
   /* BBQ ------------------------------- */
   
