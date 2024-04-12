@@ -1,87 +1,44 @@
-// Obsługa statyczna
 document.addEventListener('DOMContentLoaded', function() {
-
-	/* Deklaracja zmiennych ------------------------------- */
-	let static_window_width = window.innerWidth;
 	const menuItems = document.querySelectorAll('.menu-item-has-children');
-
-	/* ------------------------------- */
-	function prevFirstClick(){
-		menuItems.forEach(item => {
-			// z
-			const preventListener = function(event){
-				let isOpen = item.getAttribute('aria-expanded');
-
-				if(isOpen == 'false'){
-					item.setAttribute('aria-expanded', 'true');
-
-					if(event.preventDefault){
-						event.preventDefault();
-						event.stopPropagation();
-					}else{
-						event.returnValue = false;
-					}
-				}
-			}
-			item.addEventListener('click', preventListener, false );
-		}); // koniec pętli foreach.
-	};
-
-	// Gdy strona zostanie wyświetlona w wersji mobilnej pierwsze kliknięcie w rodzica, spowoduje otworzenie podmenu, a drugie kliknięcie uruchomi hiperłącze rodzica.
-	if( static_window_width < 768 ){
-		window.addEventListener('DOMContentLoaded', prevFirstClick );
+  
+	function mobileClickHandler(event) {
+	  let isOpen = this.getAttribute('aria-expanded') === 'true';
+  
+	  if (!isOpen) {
+		this.setAttribute('aria-expanded', 'true');
+		event.preventDefault(); // Stop the navigation on first click
+	  } else {
+		this.setAttribute('aria-expanded', 'false'); // Reset for next click
+	  }
 	}
-	
-});
-// koniec obsługi statycznej
-
-// Obsługa dynamiczna
-window.addEventListener('resize', function(){
-
-	const menuItems = document.querySelectorAll('.menu-item-has-children');
-	let dynamic_window_width = this.innerWidth;
-	console.log(dynamic_window_width);
-
-	/* ------------------------------- */
-	function prevFirstClick(){
-		menuItems.forEach(item => {
-			// prevent default behavior function
-			const preventListener = function(event){
-				let isOpen = item.getAttribute('aria-expanded');
-
-				if(isOpen == 'false'){
-					item.setAttribute('aria-expanded', 'true');
-
-					if(event.preventDefault){
-						event.preventDefault();
-						event.stopPropagation();
-					}else{
-						event.returnValue = false;
-					}
-				}
-			}
-			item.addEventListener('click', preventListener, true );
-		}); // koniec pętli foreach.
-	};
-	
-	if( dynamic_window_width < 768 ){
-		window.addEventListener('click', prevFirstClick );
-	}else{
-		window.removeEventListener('click', prevFirstClick );
-		
-		menuItems.forEach(item => {
-			let isOpen = item.getAttribute('aria-expanded');
-	
-			if (isOpen == 'true') {
-				// first click on parent opens submenu
-				item.setAttribute('aria-expanded', 'false');
-			}
-		});
-		
+  
+	function addMobileEvents() {
+	  menuItems.forEach(item => {
+		item.addEventListener('click', mobileClickHandler);
+	  });
 	}
-
-});
-// koniec obsługi dynamicznej
+  
+	function removeMobileEvents() {
+	  menuItems.forEach(item => {
+		item.removeEventListener('click', mobileClickHandler);
+		item.setAttribute('aria-expanded', 'false'); // Ensure menus are reset when switching to desktop
+	  });
+	}
+  
+	// Initialize event listeners based on the initial width
+	if (window.innerWidth < 768) {
+	  addMobileEvents();
+	}
+  
+	// Event listeners based window resize
+	window.addEventListener('resize', function() {
+	  if (window.innerWidth < 768) {
+		addMobileEvents();
+	  } else {
+		removeMobileEvents();
+	  }
+	});
+  });
 
 /* BBQ ------------------------------- */
 
